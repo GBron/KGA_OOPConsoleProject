@@ -8,7 +8,7 @@ namespace ConsoleProject
 {
     public static class Util
     {
-        public static void PrintLine(string text, ConsoleColor textColor, int delay = 0)
+        public static void PrintLine(string text, ConsoleColor textColor = ConsoleColor.White, int delay = 0)
         {
             Console.ForegroundColor = textColor;
             Console.WriteLine(text);
@@ -16,7 +16,7 @@ namespace ConsoleProject
             Console.ResetColor();
         }
 
-        public static void PrintCharLine(string text, ConsoleColor textColor, int delay = 0)
+        public static void PrintCharLine(string text, ConsoleColor textColor = ConsoleColor.White, int delay = 0)
         {
             Console.ForegroundColor = textColor;
             for (int i = 0; i < text.Length; i++)
@@ -28,7 +28,7 @@ namespace ConsoleProject
             Console.ResetColor();
         }
 
-        public static void Print(string text, ConsoleColor textColor, int delay = 0)
+        public static void Print(string text, ConsoleColor textColor = ConsoleColor.White, int delay = 0)
         {
             Console.ForegroundColor = textColor;
             Console.Write(text);
@@ -36,7 +36,7 @@ namespace ConsoleProject
             Console.ResetColor();
         }
 
-        public static void PrintChar(string text, ConsoleColor textColor, int delay = 0)
+        public static void PrintChar(string text, ConsoleColor textColor = ConsoleColor.White, int delay = 0)
         {
             Console.ForegroundColor = textColor;
             for (int i = 0; i < text.Length; i++)

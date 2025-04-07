@@ -4,17 +4,17 @@
     {
         public override void MainScene()
         {
-            Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+            Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
             Console.WriteLine();
-            Console.WriteLine("                  TEXT RPG                   ");
+            Console.WriteLine("                      TEXT RPG                       ");
             Console.WriteLine();
-            Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+            Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
         }
 
         public override void Select()
         {
-            Console.WriteLine("1. 시작");
-            Console.WriteLine("2. 종료");
+            Console.WriteLine("                      1. 시작");
+            Console.WriteLine("                      2. 종료");
         }
 
         public override void Reaction() 

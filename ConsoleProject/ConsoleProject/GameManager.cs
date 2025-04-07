@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ConsoleProject.Scenes;
+using ConsoleProject.status;
 
 namespace ConsoleProject
 {
@@ -17,6 +18,7 @@ namespace ConsoleProject
         private static Scene curScene;
 
         public static Player player = new Player();
+        private static PlayerStatus playerStatus = new PlayerStatus();
 
 
         public static void Start()
@@ -27,9 +29,22 @@ namespace ConsoleProject
             // 씬 등록
             sceneDict.Add("Title", new Titlescene());
             sceneDict.Add("Explan", new ExplanScene());
+            sceneDict.Add("Town", new Townscene());
+            sceneDict.Add("Shop", new Shopscene());
 
             // 현재 씬 설정
             curScene = sceneDict["Title"];
+
+            // 플레이어 기본 설정
+            player.Level = 1;
+            player.MaxExp = 100;
+            player.MaxHp = 100;
+            player.Hp = player.MaxHp;
+            player.Damage = 10;
+            player.Defense = 5;
+            player.Gold = 1000;
+            player.STR = 5;
+            player.DEX = 5;
         }
 
 
@@ -39,6 +54,8 @@ namespace ConsoleProject
             while(!gameOver)
             {
                 Console.Clear();
+                if(curScene != sceneDict["Title"] && curScene != sceneDict["Explan"])
+                playerStatus.ShowStatus();
                 curScene.MainScene();
                 curScene.Select();
                 curScene.Input();

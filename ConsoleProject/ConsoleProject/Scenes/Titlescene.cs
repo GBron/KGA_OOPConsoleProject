@@ -9,6 +9,7 @@
             Console.WriteLine("                      TEXT RPG                       ");
             Console.WriteLine();
             Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+            Console.WriteLine();
         }
 
         public override void Select()
@@ -18,6 +19,10 @@
         }
 
         public override void Reaction() 
+        {
+        }
+
+        public override void Wait()
         {
         }
 

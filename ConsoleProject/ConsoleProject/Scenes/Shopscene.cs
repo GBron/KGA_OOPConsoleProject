@@ -4,44 +4,87 @@
     {
         private string text;
 
+        
+
         public override void MainScene()
         {
-            Util.PrintLine("상점에 도착했습니다.");
-            Util.PrintLine("상점은 아기자기하게 꾸며져 있습니다.");
+            if(text == null)
+            {
+                text = "어서 오세요! 어떤 물건을 찾으시나요?";
+            }
+
+            Util.PrintLine("   ＿＿＿＿      ");
+            Util.PrintLine(" ／        ＼    ");
+            Console.WriteLine("(   ^    ^   )   {0}", text);
+            Util.PrintLine(" ＼   --   ／    ");
+            Util.PrintLine("┌            ┐   ");
+            Util.PrintLine("┃            ┃   ");
+            Util.PrintLine("");
         }
         public override void Select()
         {
-            Util.PrintLine("1. 물건 사기");
-            Util.PrintLine("2. 물건 팔기");
-            Util.PrintLine("3. 상점 나가기");
+            Util.Print("1. 힘의 포션 구입 ");
+            Util.Print("[ 힘 + 1 ] ", ConsoleColor.DarkRed);
+            Util.PrintLine("2000G", ConsoleColor.DarkYellow);
+            Util.Print("2. 민첩의 포션 구입");
+            Util.Print("[ 민첩 + 1 ] ", ConsoleColor.DarkGreen);
+            Util.PrintLine("2000G", ConsoleColor.DarkYellow);
+            Util.PrintLine("3. 나가기");
         }
+
+        
         public override void Reaction()
         {
             switch (key)
             {
                 case ConsoleKey.D1:
-                    Util.PrintLine("물건을 사러갑니다.");
+                    if(GameManager.player.Gold < 2000)
+                    {
+                        text = "돈이 부족하신데요?";
+                        return;
+                    }
+                    text = "구매 감사합니다!";
                     break;
                 case ConsoleKey.D2:
-                    Util.PrintLine("물건을 팔러갑니다.");
+                    if (GameManager.player.Gold < 2000)
+                    {
+                        text = "돈이 부족하신데요?";
+                        return;
+                    }
+                    text = "구매 감사합니다!";
                     break;
                 case ConsoleKey.D3:
                     Util.PrintLine("상점을 나갑니다.");
                     break;
             }
         }
+
+        public override void Wait()
+        {
+        }
+
         public override void Result()
         {
             switch (key)
             {
                 case ConsoleKey.D1:
-                    // 상점 물건 사기 씬으로 이동
+                    if (GameManager.player.Gold < 2000)
+                    {
+                        return;
+                    }
+                    GameManager.player.Gold -= 2000;
+                    GameManager.player.STR += 1;
                     break;
                 case ConsoleKey.D2:
-                    // 상점 물건 팔기 씬으로 이동
+                    if (GameManager.player.Gold < 2000)
+                    {
+                        return;
+                    }
+                    GameManager.player.Gold -= 2000;
+                    GameManager.player.DEX += 1;
                     break;
                 case ConsoleKey.D3:
-                    // 마을 탐험 씬으로 이동
+                    GameManager.ChangeScene("Town");
                     break;
             }
         }

@@ -25,7 +25,9 @@ namespace ConsoleProject.Scenes
         }
 
         // 선택지에 반응하는 장면     
-        public abstract void Reaction();  
+        public abstract void Reaction();
+
+        public abstract void Wait();
 
         // 씬의 결과
         public abstract void Result();

@@ -31,6 +31,8 @@ namespace ConsoleProject
             sceneDict.Add("Explan", new ExplanScene());
             sceneDict.Add("Town", new Townscene());
             sceneDict.Add("Shop", new Shopscene());
+            sceneDict.Add("Inn", new Innscene());
+            sceneDict.Add("BulletinBoard", new Bulletinboardscene());
 
             // 현재 씬 설정
             curScene = sceneDict["Title"];
@@ -55,11 +57,12 @@ namespace ConsoleProject
             {
                 Console.Clear();
                 if(curScene != sceneDict["Title"] && curScene != sceneDict["Explan"])
-                playerStatus.ShowStatus();
+                    playerStatus.ShowStatus();
                 curScene.MainScene();
                 curScene.Select();
                 curScene.Input();
                 curScene.Reaction();
+                curScene.Wait();
                 curScene.Result();
             }
             End();

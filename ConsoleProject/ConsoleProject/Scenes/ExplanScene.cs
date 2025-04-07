@@ -21,7 +21,6 @@
             Util.PrintLine("각 층을 돌파하면 던전의 몬스터들이 강해지게 됩니다!");
             Util.PrintLine("던전은 10층으로 구성되어 있으며 최상층 마왕을");
             Util.PrintLine("무찌르면 클리어 됩니다!");
-
         }
 
         public override void Select()
@@ -29,7 +28,12 @@
             Util.PrintCharLine("아무키나 눌러 시작...", ConsoleColor.DarkGray);
         }
 
+
         public override void Reaction()
+        {
+        }
+
+        public override void Wait()
         {
         }
 

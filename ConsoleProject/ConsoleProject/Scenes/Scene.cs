@@ -24,8 +24,8 @@ namespace ConsoleProject.Scenes
             key = Console.ReadKey(true).Key;
         }
 
-        // 선택지에 반응하는 장면
-        public abstract void Reaction();
+        // 선택지에 반응하는 장면     
+        public abstract void Reaction();  
 
         // 씬의 결과
         public abstract void Result();

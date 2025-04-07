@@ -26,6 +26,7 @@ namespace ConsoleProject
 
             // 씬 등록
             sceneDict.Add("Title", new Titlescene());
+            sceneDict.Add("Explan", new ExplanScene());
 
             // 현재 씬 설정
             curScene = sceneDict["Title"];
@@ -37,6 +38,7 @@ namespace ConsoleProject
             Start();
             while(!gameOver)
             {
+                Console.Clear();
                 curScene.MainScene();
                 curScene.Select();
                 curScene.Input();

@@ -1,0 +1,75 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Design;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleProject.Scenes
+{
+    public class Fieldscene : Scene
+    {
+        public override void MainScene()
+        {
+            Util.PrintLine("                                           ＿＿    ");
+            Util.PrintLine("                                      ｜＿｜  ｜＿｜  ");
+            Util.PrintLine("                                      ｜          ｜");
+            Util.PrintLine("                                      ｜  □    □  ｜");
+            Util.PrintLine("     ＿＿＿                           ｜  □    □  ｜");
+            Util.PrintLine("   ／  ＿  ＼                         ｜   ＿＿   ｜");
+            Util.PrintLine("  /   /＿\\   \\                        ｜  ｜  ｜  ｜");
+            Util.PrintLine(",...,., ., ., ., ,.,. ,. , ., . , ., .,,.,.,.,.., .,.", ConsoleColor.Green);
+            Util.PrintLine(".,.,,., .,.,.,.,. ,.,., .,.,.,.,. .,.,. ,.,.,.,.,.,.,", ConsoleColor.Green);
+            Util.PrintLine(".,., .,,.,,. ,. ,., .,.,.,.,.,.,. ,.,.  ,.,., ., .,.,", ConsoleColor.Green);
+            Util.PrintLine(".,.,,.,.. ,.,. ,., .,.,.,. ,,.,, . ,., ,.,. , ,.,.,.,", ConsoleColor.Green);
+            Util.PrintLine(",.,..,., .,,. ., .,  ,. , .,.,, . , ., ., .,.,.., .,.", ConsoleColor.Green);
+            Util.PrintLine("푸른 들판이 너머로 던전과 마왕의 성이 보입니다.");
+            Util.PrintLine("어디로 가시겠습니까?");
+        }
+
+        public override void Select()
+        {
+            Util.PrintLine("1. 던전으로");
+            Util.PrintLine("2. 마왕의 성으로");
+            Util.PrintLine("3. 마을로");
+        }
+
+        public override void Reaction()
+        {
+            switch (key)
+            {
+                case ConsoleKey.D1:
+                    Util.PrintLine("던전으로 갑니다.");
+                    break;
+                case ConsoleKey.D2:
+                    Util.PrintLine("마왕의 성으로 갑니다.");
+                    break;
+                case ConsoleKey.D3:
+                    Util.PrintLine("마을로 갑니다.");
+                    break;
+            }
+        }
+
+        public override void Wait()
+        {
+            Util.PrintLine("아무키나 눌러주세요.", ConsoleColor.DarkGray);
+            Console.ReadKey(true);
+        }
+
+        public override void Result()
+        {
+            switch (key)
+            {
+                case ConsoleKey.D1:
+                    //GameManager.ChangeScene("Dungeon");
+                    break;
+                case ConsoleKey.D2:
+                    //GameManager.ChangeScene("DemonKingCastle");
+                    break;
+                case ConsoleKey.D3:
+                    GameManager.ChangeScene("Town");
+                    break;
+            }
+        }
+    }
+}

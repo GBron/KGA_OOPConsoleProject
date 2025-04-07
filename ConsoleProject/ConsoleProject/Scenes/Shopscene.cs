@@ -4,8 +4,6 @@
     {
         private string text;
 
-        
-
         public override void MainScene()
         {
             if(text == null)
@@ -85,6 +83,7 @@
                     break;
                 case ConsoleKey.D3:
                     GameManager.ChangeScene("Town");
+                    text = null;
                     break;
             }
         }

@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleProject.Scenes
+﻿namespace ConsoleProject.Scenes
 {
     public class Townscene : Scene
     {
@@ -21,6 +14,7 @@ namespace ConsoleProject.Scenes
             Util.PrintLine("2. 여관");
             Util.PrintLine("3. 게시판 확인");
             Util.PrintLine("4. 검 박힌 바위");
+            Util.PrintLine("5. 마을 밖으로");
         }
         public override void Reaction()
         {
@@ -37,6 +31,9 @@ namespace ConsoleProject.Scenes
                     break;
                 case ConsoleKey.D4:
                     Util.PrintLine("마을의 명물, 성검이 박힌 바위로 다가갑니다.");
+                    break;
+                case ConsoleKey.D5:
+                    Util.PrintLine("마을 밖으로 나갑니다.");
                     break;
             }
         }
@@ -62,6 +59,9 @@ namespace ConsoleProject.Scenes
                     break;
                 case ConsoleKey.D4:
                     // 성검이 박힌 바위 씬으로 이동
+                    break;
+                case ConsoleKey.D5:
+                    GameManager.ChangeScene("Field");
                     break;
             }
         }

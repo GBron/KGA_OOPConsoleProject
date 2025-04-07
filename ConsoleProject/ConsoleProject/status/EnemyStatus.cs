@@ -14,8 +14,9 @@ namespace ConsoleProject.status
         public override void ShowStatus()
         {
             Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
-            Console.WriteLine($"체력 : {GameManager.enemy.MaxExp,4} / {GameManager.enemy.Hp,4}");
-            Console.WriteLine($"공격력 : {GameManager.enemy.Damage,5}   방어력 : {GameManager.enemy.Defense, 5}");
+            Console.WriteLine($"적 이름 : {GameManager.monster.Name}");
+            Console.WriteLine($"체력 : {GameManager.monster.MaxExp,4} / {GameManager.monster.Hp,4}");
+            Console.WriteLine($"공격력 : {GameManager.monster.Damage,5}   방어력 : {GameManager.monster.Defense, 5}");
             Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
         }
     }

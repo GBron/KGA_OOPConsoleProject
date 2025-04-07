@@ -33,6 +33,7 @@ namespace ConsoleProject
             sceneDict.Add("Shop", new Shopscene());
             sceneDict.Add("Inn", new Innscene());
             sceneDict.Add("BulletinBoard", new Bulletinboardscene());
+            sceneDict.Add("Field", new Fieldscene());
 
             // 현재 씬 설정
             curScene = sceneDict["Title"];

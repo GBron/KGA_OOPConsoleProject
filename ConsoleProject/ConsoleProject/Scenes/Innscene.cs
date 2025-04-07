@@ -3,15 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ConsoleProject.Scenes
 {
     public class Innscene : Scene
     {
+        private string text;
         public override void MainScene()
         {
-            Util.PrintLine("여관에 도착했습니다.");
-            Util.PrintLine("여관은 아늑하게 꾸며져 있습니다.");
+            if (text == null)
+            {
+                text = "어서 오세요! 휴식하러 오셨나요?";
+            }
+
+            Util.PrintLine("   ＿＿＿＿      ");
+            Util.PrintLine(" ／        ＼    ");
+            Console.WriteLine("(   ^    ^   )   {0}", text);
+            Util.PrintLine(" ＼   --   ／    ");
+            Util.PrintLine("┌            ┐   ");
+            Util.PrintLine("┃            ┃   ");
+            Util.PrintLine("");
         }
         public override void Select()
         {
@@ -27,14 +39,13 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D1:
                     if (GameManager.player.Gold < 100)
                     {
-                        Util.PrintLine("돈이 부족합니다.");
+                        text = "돈이 부족해요.";
                         return;
                     }
-                    Util.Print("휴식 합니다...");
-                    Util.PrintLine("[ 체력 전부 회복! ]", ConsoleColor.Green);
+                    text = "푹 쉬세요~";
                     break;
                 case ConsoleKey.D2:
-                    Util.PrintLine("방에서 나갑니다.");
+                    Util.PrintLine("여관에서 나갑니다.");
                     break;
             }
         }
@@ -50,7 +61,6 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D1:
                     if (GameManager.player.Gold < 100)
                     {
-                        Util.PrintLine("돈이 부족합니다.");
                         return;
                     }
                     GameManager.player.Hp = GameManager.player.MaxExp;
@@ -58,6 +68,7 @@ namespace ConsoleProject.Scenes
                     break;
                 case ConsoleKey.D2:
                     GameManager.ChangeScene("Town");
+                    text = null;
                     break;
             }
         }

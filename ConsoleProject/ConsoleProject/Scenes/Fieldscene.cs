@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject.Scenes
 {
-    public class Fieldscene : Scene
+    public class FieldScene : Scene
     {
         public override void MainScene()
         {
@@ -23,14 +23,14 @@ namespace ConsoleProject.Scenes
             Util.PrintLine(".,., .,,.,,. ,. ,., .,.,.,.,.,.,. ,.,.  ,.,., ., .,.,", ConsoleColor.Green);
             Util.PrintLine(".,.,,.,.. ,.,. ,., .,.,.,. ,,.,, . ,., ,.,. , ,.,.,.,", ConsoleColor.Green);
             Util.PrintLine(",.,..,., .,,. ., .,  ,. , .,.,, . , ., ., .,.,.., .,.", ConsoleColor.Green);
-            Util.PrintLine("푸른 들판이 너머로 던전과 마왕의 성이 보입니다.");
+            Util.PrintLine("푸른 들판이 너머로 던전과 탑이 보입니다.");
             Util.PrintLine("어디로 가시겠습니까?");
         }
 
         public override void Select()
         {
             Util.PrintLine("1. 던전으로");
-            Util.PrintLine("2. 마왕의 성으로");
+            Util.PrintLine("2. 탑으로");
             Util.PrintLine("3. 마을로");
         }
 
@@ -42,10 +42,10 @@ namespace ConsoleProject.Scenes
                     Util.PrintLine("던전으로 갑니다.");
                     break;
                 case ConsoleKey.D2:
-                    Util.PrintLine("마왕의 성으로 갑니다.");
+                    Util.PrintLine("탑으로 갑니다.");
                     break;
                 case ConsoleKey.D3:
-                    Util.PrintLine("마을로 갑니다.");
+                    Util.PrintLine("마을로 돌아갑니다.");
                     break;
             }
         }
@@ -61,10 +61,11 @@ namespace ConsoleProject.Scenes
             switch (key)
             {
                 case ConsoleKey.D1:
-                    //GameManager.ChangeScene("Dungeon");
+                    GameManager.ChangeScene("Battle");
+                    Util.RandomMonster();
                     break;
                 case ConsoleKey.D2:
-                    //GameManager.ChangeScene("DemonKingCastle");
+                    GameManager.ChangeScene("Tower");
                     break;
                 case ConsoleKey.D3:
                     GameManager.ChangeScene("Town");

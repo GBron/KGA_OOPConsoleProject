@@ -7,7 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace ConsoleProject.Scenes
 {
-    public class Innscene : Scene
+    public class InnScene : Scene
     {
         private string text;
         public override void MainScene()
@@ -19,7 +19,7 @@ namespace ConsoleProject.Scenes
 
             Util.PrintLine("   ＿＿＿＿      ");
             Util.PrintLine(" ／        ＼    ");
-            Console.WriteLine("(   ^    ^   )   {0}", text);
+            Util.PrintLine($"(   ^    ^   )   {text}");
             Util.PrintLine(" ＼   --   ／    ");
             Util.PrintLine("┌            ┐   ");
             Util.PrintLine("┃            ┃   ");

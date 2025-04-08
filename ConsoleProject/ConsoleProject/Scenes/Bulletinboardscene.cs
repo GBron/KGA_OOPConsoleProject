@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject.Scenes
 {
-    public class Bulletinboardscene : Scene
+    public class BulletinboardScene : Scene
     {
         public override void MainScene()
         {

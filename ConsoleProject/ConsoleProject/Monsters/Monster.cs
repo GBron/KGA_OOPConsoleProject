@@ -23,13 +23,40 @@ namespace ConsoleProject.Monsters
         private int defense;
         public int Defense { get { return defense; } set { defense = value; } }
 
-        public Monster(string name, int maxHp, int damage, int defense)
+        private int exp;
+        public int Exp { get { return exp; } set { exp = value; } }
+
+        private int gold;
+        public int Gold { get { return gold; } set { gold = value; } }
+
+        public Monster(string name, int maxHp, int damage, int defense, int exp, int gold)
         {
-            this.name = name;
-            this.maxHp = maxHp;
-            this.hp = maxHp;
-            this.damage = damage;
-            this.defense = defense;
+            this.Name = name;
+            this.MaxHp = maxHp;
+            this.Hp = maxHp;
+            this.Damage = damage;
+            this.Defense = defense;
+            this.Exp = exp;
+            this.Gold = gold;
+        }
+
+        public void MonsterAttack()
+        {
+            GameManager.player.PlayerTakenDamage();
+        }
+
+        public void MonsterTakenDamage()
+        {
+            if(GameManager.curMonster.Defense < GameManager.player.Damage)
+            {
+                GameManager.curMonster.Hp -= (GameManager.player.Damage - GameManager.curMonster.Defense);
+                Util.PrintLine($"플레이어의 공격!", ConsoleColor.DarkGreen);
+                Util.Print($"플레이어가 {GameManager.curMonster.Name}에게 ");
+                Util.Print($"{(GameManager.player.Damage - GameManager.curMonster.Defense)}", ConsoleColor.Red);
+                Util.PrintLine("의 피해를 입었습니다.\n", ConsoleColor.White, 1000);
+                return;
+            }
+            Util.Print($"{GameManager.curMonster.Name}이/가 공격을 방어했습니다.\n", ConsoleColor.White, 1500);
         }
     }
 }

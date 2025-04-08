@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ConsoleProject.Monsters;
 using ConsoleProject.Scenes;
 using ConsoleProject.status;
 
@@ -14,11 +10,20 @@ namespace ConsoleProject
 
         private static bool gameOver = false;
 
+        public static Random rand = new Random();
+
+
+
         private static Dictionary<string, Scene> sceneDict;
         private static Scene curScene;
 
         public static Player player = new Player();
         private static PlayerStatus playerStatus = new PlayerStatus();
+
+        private static MonsterFactory monsterFactory = new Monsters.MonsterFactory();
+        public static Monster curMonster;
+        public static EnemyStatus enemyStatus { get;  set; } = new EnemyStatus();
+
 
 
         public static void Start()
@@ -27,13 +32,16 @@ namespace ConsoleProject
             sceneDict = new Dictionary<string, Scene>();
 
             // 씬 등록
-            sceneDict.Add("Title", new Titlescene());
+            sceneDict.Add("Title", new TitleScene());
             sceneDict.Add("Explan", new ExplanScene());
-            sceneDict.Add("Town", new Townscene());
+            sceneDict.Add("Town", new TownScene());
             sceneDict.Add("Shop", new Shopscene());
-            sceneDict.Add("Inn", new Innscene());
-            sceneDict.Add("BulletinBoard", new Bulletinboardscene());
-            sceneDict.Add("Field", new Fieldscene());
+            sceneDict.Add("Inn", new InnScene());
+            sceneDict.Add("BulletinBoard", new BulletinboardScene());
+            sceneDict.Add("Field", new FieldScene());
+            sceneDict.Add("Dungeon", new DungeonScene());
+            sceneDict.Add("Tower", new TowerScene());
+            sceneDict.Add("Battle", new BattleScene());
 
             // 현재 씬 설정
             curScene = sceneDict["Title"];
@@ -43,7 +51,7 @@ namespace ConsoleProject
             player.MaxExp = 100;
             player.MaxHp = 100;
             player.Hp = player.MaxHp;
-            player.Damage = 10;
+            player.Damage = 50;
             player.Defense = 5;
             player.Gold = 1000;
             player.STR = 5;
@@ -54,10 +62,10 @@ namespace ConsoleProject
         public static void Run()
         {
             Start();
-            while(!gameOver)
+            while (!gameOver)
             {
                 Console.Clear();
-                if(curScene != sceneDict["Title"] && curScene != sceneDict["Explan"])
+                if (curScene != sceneDict["Title"] && curScene != sceneDict["Explan"])
                     playerStatus.ShowStatus();
                 curScene.MainScene();
                 curScene.Select();
@@ -71,12 +79,17 @@ namespace ConsoleProject
 
         public static void ChangeScene(string sceneName)
         {
-                curScene = sceneDict[sceneName];
+            curScene = sceneDict[sceneName];
+        }
+
+        public static void ChangeMonster(MonsterList monsterName)
+        {
+            curMonster = monsterFactory.Create(monsterName);
         }
 
         public static void End()
         {
-            
+
         }
 
         public static void Exit()

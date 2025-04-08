@@ -8,6 +8,7 @@ namespace ConsoleProject
 {
     public static class Util
     {
+
         public static void PrintLine(string text, ConsoleColor textColor = ConsoleColor.White, int delay = 0)
         {
             Console.ForegroundColor = textColor;
@@ -45,6 +46,20 @@ namespace ConsoleProject
                 Thread.Sleep(delay);
             }
             Console.ResetColor();
+        }
+
+        public static void RandomMonster()
+        {
+            int rand = GameManager.rand.Next(1, 101);
+
+            if (rand <= 10)
+                GameManager.ChangeMonster(Monsters.MonsterList.오크);
+            else if (rand > 10 && rand <= 25)
+                GameManager.ChangeMonster(Monsters.MonsterList.코볼트);
+            else if (rand > 25 && rand <= 50)
+                GameManager.ChangeMonster(Monsters.MonsterList.고블린);
+            else if (rand > 50 && rand <= 100)
+                GameManager.ChangeMonster(Monsters.MonsterList.슬라임);
         }
     }
 }

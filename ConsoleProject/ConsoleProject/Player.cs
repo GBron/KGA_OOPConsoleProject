@@ -38,5 +38,24 @@ namespace ConsoleProject
         private int dexterity;
         public int DEX { get { return dexterity; } set { dexterity = value; } }
 
+        public void PlayerAttack()
+        {
+            GameManager.curMonster.MonsterTakenDamage();
+        }
+
+        public void PlayerTakenDamage()
+        {
+            if (GameManager.player.Defense < GameManager.curMonster.Damage)
+            {
+                GameManager.player.Hp -= (GameManager.curMonster.Damage - GameManager.player.Defense);
+                Util.PrintLine($"{GameManager.curMonster.Name}의 공격!", ConsoleColor.DarkRed);
+                Util.Print($"{GameManager.curMonster.Name}이/가 플레이어에게 ");
+                Util.Print($"{(GameManager.curMonster.Damage - GameManager.player.Defense)}", ConsoleColor.Red);
+                Util.PrintLine("의 피해를 입었습니다.\n", ConsoleColor.White, 1500);
+
+                return;
+            }
+            Util.Print("플레이어가 공격을 방어했습니다.\n", ConsoleColor.White, 1500);
+        }
     }
 }

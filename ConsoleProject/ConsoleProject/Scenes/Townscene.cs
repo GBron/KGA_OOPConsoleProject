@@ -1,6 +1,6 @@
 ﻿namespace ConsoleProject.Scenes
 {
-    public class Townscene : Scene
+    public class TownScene : Scene
     {
         public override void MainScene()
         {

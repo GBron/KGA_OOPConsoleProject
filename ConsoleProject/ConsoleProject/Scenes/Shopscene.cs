@@ -13,23 +13,23 @@
 
             Util.PrintLine("   ＿＿＿＿      ");
             Util.PrintLine(" ／        ＼    ");
-            Console.WriteLine("(   ^    ^   )   {0}", text);
+            Util.PrintLine($"(   ^    ^   )   {text}");
             Util.PrintLine(" ＼   --   ／    ");
             Util.PrintLine("┌            ┐   ");
             Util.PrintLine("┃            ┃   ");
             Util.PrintLine("");
         }
+
         public override void Select()
         {
             Util.Print("1. 힘의 포션 구입 ");
             Util.Print("[ 힘 + 1 ] ", ConsoleColor.DarkRed);
-            Util.PrintLine("2000G", ConsoleColor.DarkYellow);
+            Util.PrintLine("200 G", ConsoleColor.DarkYellow);
             Util.Print("2. 민첩의 포션 구입");
             Util.Print("[ 민첩 + 1 ] ", ConsoleColor.DarkGreen);
             Util.PrintLine("2000G", ConsoleColor.DarkYellow);
             Util.PrintLine("3. 나가기");
         }
-
         
         public override void Reaction()
         {

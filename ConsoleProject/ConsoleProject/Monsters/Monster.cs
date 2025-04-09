@@ -40,23 +40,6 @@ namespace ConsoleProject.Monsters
             this.Gold = gold;
         }
 
-        public void MonsterAttack()
-        {
-            GameManager.player.PlayerTakenDamage();
-        }
-
-        public void MonsterTakenDamage()
-        {
-            if(GameManager.curMonster.Defense < GameManager.player.Damage)
-            {
-                GameManager.curMonster.Hp -= (GameManager.player.Damage - GameManager.curMonster.Defense);
-                Util.PrintLine($"플레이어의 공격!", ConsoleColor.DarkGreen);
-                Util.Print($"플레이어가 {GameManager.curMonster.Name}에게 ");
-                Util.Print($"{(GameManager.player.Damage - GameManager.curMonster.Defense)}", ConsoleColor.Red);
-                Util.PrintLine("의 피해를 입었습니다.\n", ConsoleColor.White, 1000);
-                return;
-            }
-            Util.Print($"{GameManager.curMonster.Name}이/가 공격을 방어했습니다.\n", ConsoleColor.White, 1500);
-        }
+        
     }
 }

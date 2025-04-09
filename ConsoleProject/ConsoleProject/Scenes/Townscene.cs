@@ -37,7 +37,7 @@
                     break;
             }
         }
-        w
+        
         public override void Wait()
         {
             Util.PrintLine("아무키나 눌러주세요.", ConsoleColor.DarkGray);

@@ -21,13 +21,13 @@
             switch (key)
             {
                 case ConsoleKey.D1:
-                    GameManager.player.PlayerAttack();
+                    GameManager.battle.PlayerAttack();
                     break;
                 case ConsoleKey.D2:
-                    Util.PrintLine("방어합니다.");
+                    GameManager.battle.PlayerDefense();
                     break;
                 case ConsoleKey.D3:
-                    Util.PrintLine("도망갑니다.");
+                    Util.PrintLine("당신은 던전 밖으로 도망쳤습니다...", ConsoleColor.White, 1500);
                     break;
             }
         }
@@ -42,20 +42,15 @@
                 case ConsoleKey.D1:
                     if (GameManager.curMonster.Hp <= 0)
                     {
-                        Util.PrintLine($"{GameManager.curMonster.Name}을/를 처치했습니다.", ConsoleColor.White, 1000);
-                        GameManager.player.Exp += GameManager.curMonster.Exp;
-                        GameManager.player.Gold += GameManager.curMonster.Gold;
-                        Util.PrintLine($"{GameManager.curMonster.Exp}의 경험치와 {GameManager.curMonster.Gold}의 골드를 얻었습니다!", ConsoleColor.White, 1000);
-                        GameManager.curMonster = null;
-                        GameManager.ChangeScene("Field");
+                        GameManager.battle.BattleEnd();
                     }
                     else
                     {
-                        GameManager.curMonster.MonsterAttack();
+                        GameManager.battle.MonsterAttack();
                     }
                     break;
                 case ConsoleKey.D2:
-                    GameManager.curMonster.MonsterAttack();
+                    GameManager.battle.MonsterAttack();
                     break;
                 case ConsoleKey.D3:
                     GameManager.ChangeScene("Field");

@@ -45,7 +45,7 @@
                     Util.PrintLine("            ／\\");
                     Util.PrintLine("         ／    ＼");
                     Util.PrintLine("      ／         \\");
-                    Util.PrintLine("     /   o   o    \\ ");
+                    Util.PrintLine("     /   ○    ○   \\ ");
                     Util.PrintLine("     \\            /");
                     Util.PrintLine("      ＼        ／");
                     Util.PrintLine("        ￣￣￣￣");

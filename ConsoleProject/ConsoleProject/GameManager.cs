@@ -25,6 +25,8 @@ namespace ConsoleProject
         public static EnemyStatus enemyStatus { get;  set; } = new EnemyStatus();
 
 
+        public static Battle battle = new Battle();
+
 
         public static void Start()
         {
@@ -33,7 +35,7 @@ namespace ConsoleProject
 
             // 씬 등록
             sceneDict.Add("Title", new TitleScene());
-            sceneDict.Add("Explan", new ExplanScene());
+            sceneDict.Add("Explan", new IntroScene());
             sceneDict.Add("Town", new TownScene());
             sceneDict.Add("Shop", new Shopscene());
             sceneDict.Add("Inn", new InnScene());

@@ -27,10 +27,13 @@ namespace ConsoleProject.Item.Weapon
                     weapon = new Weapon("강철검", 30, 10000);
                     break;
                 case WeaponList.미스릴검:
-                    weapon = new Weapon("미스릴검", 40, 20000);
+                    weapon = new Weapon("미스릴검", 45, 20000);
                     break;
                 case WeaponList.아다만티움검:
                     weapon = new Weapon("아다만티움검", 60, 30000);
+                    break;
+                case WeaponList.없음:
+                    weapon = new Weapon("없음", 0, 0);
                     break;
             }
             return weapon;

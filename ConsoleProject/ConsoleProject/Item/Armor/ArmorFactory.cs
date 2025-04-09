@@ -32,6 +32,9 @@ namespace ConsoleProject.Item.Armor
                 case ArmorList.아다만티움판금갑옷:
                     armor = new Armor("아다만티움 판금 갑옷", 50, 30000);
                     break;
+                case ArmorList.없음:
+                    armor = new Armor("없음", 0, 0);
+                    break;
             }
             return armor;
         }

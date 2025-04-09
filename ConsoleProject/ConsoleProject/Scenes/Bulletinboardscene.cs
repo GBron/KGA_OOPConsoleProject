@@ -33,7 +33,10 @@ namespace ConsoleProject.Scenes
                     Util.PrintLine("퀘스트가 없습니다...", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.D3:
+                    if (GameManager.towerFloor == 0 || GameManager.towerFloor == 1)
                     Util.PrintLine("아직 마왕의 탑은 건재합니다.", ConsoleColor.White, 1500);
+                    else
+                        Util.PrintLine($"마왕의 탑이 {GameManager.towerFloor - 1}층까지 공략되었습니다!", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.D4:
                     Util.PrintLine("게시판을 떠납니다.", ConsoleColor.White, 1500);
@@ -45,8 +48,7 @@ namespace ConsoleProject.Scenes
         }
         public override void Wait()
         {
-            Util.PrintLine("아무키나 눌러주세요.", ConsoleColor.DarkGray);
-            Console.ReadKey(true);
+            
         }
 
         public override void Result()

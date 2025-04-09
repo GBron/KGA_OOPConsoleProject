@@ -1,19 +1,19 @@
-﻿using System;
+﻿using ConsoleProject.Item.Weapon;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ConsoleProject.Item.Weapon;
+using ConsoleProject.Item;
+using ConsoleProject.Item.Armor;
 
 namespace ConsoleProject.Scenes
 {
-    public class WeaponShopScene : Scene
+    class ArmorShopScene : Scene
     {
         private string text1;
         private string text2;
         private string text3;
-
-        
 
         public override void MainScene()
         {
@@ -41,17 +41,17 @@ namespace ConsoleProject.Scenes
 
         public override void Select()
         {
-            Util.Print("1. 목검 구입           공격력 + 10   ");
+            Util.Print("1. 천 갑옷 구입               방어력 +  3   ");
             Util.PrintLine("1500G", ConsoleColor.DarkYellow);
-            Util.Print("2. 청동검 구입         공격력 + 15   ");
-            Util.PrintLine("3000G", ConsoleColor.DarkYellow);
-            Util.Print("3. 철검 구입           공격력 + 20   ");
-            Util.PrintLine("5000G", ConsoleColor.DarkYellow);
-            Util.Print("4. 강철검 구입         공격력 + 30  ");
+            Util.Print("2. 가죽 갑옷 구입             방어력 +  8   ");
+            Util.PrintLine("4000G", ConsoleColor.DarkYellow);
+            Util.Print("3. 판금 갑옷 구입             방어력 + 15   ");
+            Util.PrintLine("7500G", ConsoleColor.DarkYellow);
+            Util.Print("4. 사슬 갑옷 구입             방어력 + 20  ");
             Util.PrintLine("10000G", ConsoleColor.DarkYellow);
-            Util.Print("5. 미스릴검 구입       공격력 + 45  ");
+            Util.Print("5. 미스릴 판금 갑옷 구입      방어력 + 35  ");
             Util.PrintLine("20000G", ConsoleColor.DarkYellow);
-            Util.Print("6. 아다만티움검 구입   공격력 + 60  ");
+            Util.Print("6. 아다만티움 판금 갑옷 구입  방어력 + 50  ");
             Util.PrintLine("30000G", ConsoleColor.DarkYellow);
             Util.PrintLine("7. 나가기");
         }
@@ -67,9 +67,9 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D5:
                 case ConsoleKey.D6:
 
-                    GameManager.weapon = GameManager.weaponFactory.Create((WeaponList)(key - ConsoleKey.D1));
+                    GameManager.armor = GameManager.armorFactory.Create((ArmorList)(key - ConsoleKey.D1));
 
-                    if (GameManager.player.Gold < GameManager.weapon.Price)
+                    if (GameManager.player.Gold < GameManager.armor.Price)
                     {
                         text1 = "돈이 부족하신데요?";
                         text2 = null;
@@ -77,12 +77,12 @@ namespace ConsoleProject.Scenes
                         return;
                     }
                     text1 = "구매 감사합니다!";
-                    text2 = $"[ {GameManager.weapon.Name} 구입 ]";
-                    text3 = $"-{GameManager.weapon.Price}G";
+                    text2 = $"[ {GameManager.armor.Name} 구입 ]";
+                    text3 = $"-{GameManager.armor.Price}G";
 
-                    
+
                     break;
-                    
+
                 case ConsoleKey.D7:
                     Util.PrintLine("상점을 나갑니다.", ConsoleColor.White, 1500);
                     break;
@@ -106,12 +106,12 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D4:
                 case ConsoleKey.D5:
                 case ConsoleKey.D6:
-                    if (GameManager.player.Gold < GameManager.weapon.Price)
+                    if (GameManager.player.Gold < GameManager.armor.Price)
                     {
                         return;
                     }
-                    GameManager.player.Gold -= GameManager.weapon.Price;
-                    GameManager.inventory.AddItem(GameManager.weapon);
+                    GameManager.player.Gold -= GameManager.armor.Price;
+                    GameManager.inventory.AddItem(GameManager.armor);
                     break;
                 case ConsoleKey.D7:
                     GameManager.ChangeScene("Town");

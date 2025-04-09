@@ -2,6 +2,9 @@
 using ConsoleProject.Monsters;
 using ConsoleProject.Scenes;
 using ConsoleProject.status;
+using ConsoleProject.Item;
+using ConsoleProject.Item.Weapon;
+using ConsoleProject.Item.Armor;
 
 namespace ConsoleProject
 {
@@ -23,6 +26,10 @@ namespace ConsoleProject
         public static Player player = new Player();
         private static PlayerStatus playerStatus = new PlayerStatus();
         public static Inventory inventory = new Inventory();
+        public static WeaponFactory weaponFactory = new WeaponFactory();
+        public static Weapon weapon;
+        public static ArmorFactory armorFactory = new ArmorFactory();
+        public static Armor armor;
 
         // 몬스터 관련
         private static MonsterFactory monsterFactory = new Monsters.MonsterFactory();
@@ -62,6 +69,8 @@ namespace ConsoleProject
             sceneDict.Add("Tower2", new Tower2Scene());
             sceneDict.Add("Dead", new DeadScene());
             sceneDict.Add("Ending", new GameEndScene());
+            sceneDict.Add("WeaponShop", new WeaponShopScene());
+            sceneDict.Add("ArmorShop", new ArmorShopScene());
 
             // 현재 씬 설정
             curScene = sceneDict["Title"];
@@ -76,6 +85,9 @@ namespace ConsoleProject
             player.Gold = 10000;
             player.STR = 5;
             player.DEX = 5;
+
+            player.EquipItem(weaponFactory.Create(WeaponList.없음));
+            player.EquipItem(armorFactory.Create(ArmorList.없음));
         }
 
 

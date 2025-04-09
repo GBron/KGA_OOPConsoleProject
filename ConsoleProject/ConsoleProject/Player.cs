@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleProject.Item;
+﻿using ConsoleProject.Item;
+using ConsoleProject.Item.Armor;
+using ConsoleProject.Item.Weapon;
 
 namespace ConsoleProject
 {
@@ -29,7 +26,7 @@ namespace ConsoleProject
 
         private int damage;
         public int Damage { get { return damage; } set { damage = value; } }
-        
+
         private int defense;
         public int Defense { get { return defense; } set { defense = value; } }
 
@@ -39,11 +36,14 @@ namespace ConsoleProject
         private int dexterity;
         public int DEX { get { return dexterity; } set { dexterity = value; } }
 
-        
-        public int criticalChance { get { return 1 + DEX / 4; }}
+        public int criticalChance { get { return 1 + DEX / 4; } }
 
         private int totalDamage;
         public int TotalDamage { get { return totalDamage; } set { totalDamage = value; } }
+
+        public Weapon equipWeapon { get; private set; }
+
+        public Armor equipArmor { get; private set; }
 
 
         public void LevelUp()
@@ -65,8 +65,37 @@ namespace ConsoleProject
         public void Heal(int healPoint)
         {
             Hp += healPoint;
-            if(Hp > MaxHp)
+            if (Hp > MaxHp)
                 Hp = MaxHp;
+        }
+
+        public void EquipItem(IItem item)
+        {
+            IItem tempItem = null;
+            if (item is Weapon)
+                if (equipWeapon != null)
+                    tempItem = GameManager.player.equipWeapon;
+                else
+                    tempItem = GameManager.weaponFactory.Create(WeaponList.없음);
+            else if (item is Armor)
+                if (equipArmor != null)
+                    tempItem = GameManager.player.equipArmor;
+                else
+                    tempItem = GameManager.armorFactory.Create(ArmorList.없음);
+
+            if (item is Weapon)
+            {
+                equipWeapon = (Weapon)item;
+
+            }
+            else if (item is Armor)
+            {
+                equipArmor = (Armor)item;
+            }
+
+            GameManager.inventory.RemoveItem(item);
+            if (tempItem?.Name != "없음")
+                GameManager.inventory.AddItem(tempItem);
         }
     }
 }

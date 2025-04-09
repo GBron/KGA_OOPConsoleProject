@@ -42,13 +42,13 @@ namespace ConsoleProject.Scenes
 
         public override void Select()
         {
-            Util.Print("1. 힘의 포션 구입 ");
-            Util.Print("[ 힘 + 1 ] ", ConsoleColor.DarkRed);
-            Util.PrintLine("2000 G", ConsoleColor.DarkYellow);
+            Util.Print("1. 힘의 포션 구입    ");
+            Util.Print("[ 힘 + 1 ]  ", ConsoleColor.DarkRed);
+            Util.PrintLine("2000G", ConsoleColor.DarkYellow);
             Util.Print("2. 민첩의 포션 구입 ");
             Util.Print("[ 민첩 + 1 ] ", ConsoleColor.DarkCyan);
             Util.PrintLine("2000G", ConsoleColor.DarkYellow);
-            Util.Print("3. 회복 포션 구입 ");
+            Util.Print("3. 회복 포션 구입                 ");
             Util.PrintLine("200G", ConsoleColor.DarkYellow);
             Util.PrintLine("4. 나가기");
         }

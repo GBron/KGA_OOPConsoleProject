@@ -33,7 +33,7 @@ namespace ConsoleProject.Battle
         {
             Util.PrintLine($"플레이어의 방어!", ConsoleColor.DarkGreen, 500);
             Util.Print("플레이어가 방어를 준비합니다.", ConsoleColor.White);
-            playerTempDefense = GameManager.player.Defense;
+            playerTempDefense = GameManager.player.Defense + GameManager.player.equipArmor.Defense;
             Util.PrintLine("[ 일시적 방어력 상승 ]\n", ConsoleColor.DarkBlue, 1000);
         }
 
@@ -45,12 +45,12 @@ namespace ConsoleProject.Battle
             {
                 isCritical = true;
                 GameManager.player.TotalDamage =
-                    (int)(GameManager.player.Damage * (1f + (float)GameManager.player.STR / 100)) * 2 - GameManager.curBoss.Defense;
+                    (int)((GameManager.player.Damage + GameManager.player.equipWeapon.Damage) * (1f + (float)GameManager.player.STR / 100)) * 2 - GameManager.curBoss.Defense;
                 return;
             }
 
             GameManager.player.TotalDamage =
-                (int)(GameManager.player.Damage * (1f + (float)GameManager.player.STR / 100)) - GameManager.curBoss.Defense;
+                (int)((GameManager.player.Damage + GameManager.player.equipWeapon.Damage) * (1f + (float)GameManager.player.STR / 100)) - GameManager.curBoss.Defense;
         }
 
         public override void MonsterAttack()
@@ -79,7 +79,7 @@ namespace ConsoleProject.Battle
         protected override void MonsterTotalDamage()
         {
             GameManager.curBoss.TotalDamage =
-                GameManager.curBoss.Damage - (GameManager.player.Defense + playerTempDefense);
+                GameManager.curBoss.Damage - ((GameManager.player.Defense + GameManager.player.equipArmor.Defense) + playerTempDefense);
         }
 
         public override void BattleEnd()

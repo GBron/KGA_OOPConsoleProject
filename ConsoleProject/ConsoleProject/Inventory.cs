@@ -11,7 +11,7 @@ namespace ConsoleProject
 
         public Inventory()
         {
-            inventory = new List<IItem>();
+            inventory = new List<IItem>(9);
         }
 
         public void AddItem(IItem item)
@@ -142,8 +142,9 @@ namespace ConsoleProject
 
         public void UseConfirm()
         {
-            if (inventory[index] is IUsable)
+            if (index < inventory.Count && inventory[index] is IUsable)
             {
+                ShowInventory();
                 Util.PrintLine($"{inventory[index].Name}을 사용하시겠습니까?");
                 Util.PrintLine("1. 예");
                 Util.PrintLine("2. 아니요");
@@ -160,22 +161,33 @@ namespace ConsoleProject
                         break;
                 }
             }
+            else if (index >= inventory.Count)
+            {
+                ShowInventory();
+                Util.PrintLine("그 슬롯엔 아이템이 없습니다.", ConsoleColor.Yellow, 1000);
+                stack.Pop();
+            }
             else
+            {
+                ShowInventory();
                 Util.PrintLine("사용할 수 없는 아이템입니다.", ConsoleColor.Yellow, 1000);
+                stack.Pop();
+            }
         }
 
         public void EquipConfirm()
         {
-            if (inventory[index] is IEquipable)
+            if (index < inventory.Count && inventory[index] is IEquipable)
             {
+                ShowInventory();
                 Util.PrintLine($"{inventory[index].Name}을 장착하시겠습니까?");
-            Util.PrintLine("1. 예");
-            Util.PrintLine("2. 아니요");
-            input = Console.ReadKey(true).Key;
+                Util.PrintLine("1. 예");
+                Util.PrintLine("2. 아니요");
+                input = Console.ReadKey(true).Key;
                 switch (input)
                 {
                     case ConsoleKey.D1:
-                        // EquipItem(index);
+                        GameManager.player.EquipItem(inventory[index]);
                         stack.Pop();
                         break;
                     case ConsoleKey.D2:
@@ -183,8 +195,18 @@ namespace ConsoleProject
                         break;
                 }
             }
+            else if (index >= inventory.Count)
+            {
+                ShowInventory();
+                Util.PrintLine("그 슬롯엔 아이템이 없습니다.", ConsoleColor.Yellow, 1000);
+                stack.Pop();
+            }
             else
+            {
+                ShowInventory();
                 Util.PrintLine("장착할 수 없는 아이템입니다.", ConsoleColor.Yellow, 1000);
+                stack.Pop();
+            }
         }
 
         public void ShowInventory()
@@ -199,6 +221,17 @@ namespace ConsoleProject
                 Console.WriteLine($"{i + 1}. {inventory[i].Name}");
             }
             Util.PrintLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+
+            Console.SetCursorPosition(32, 0);
+            Util.PrintLine("□□□□□□ 장비 □□□□□□");
+            Console.SetCursorPosition(32, 1);
+            Util.PrintLine($"무기   : {GameManager.player.equipWeapon.Name}");
+            Console.SetCursorPosition(32, 2);
+            Util.PrintLine($"방어구 : {GameManager.player.equipArmor.Name}");
+            Console.SetCursorPosition(32, 3);
+            Util.PrintLine("□□□□□□□□□□□□□□□□□□");
+            Console.SetCursorPosition(0, 13);
+
         }
 
 

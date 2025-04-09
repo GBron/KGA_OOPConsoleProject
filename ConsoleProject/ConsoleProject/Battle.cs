@@ -50,12 +50,13 @@
 
         public void BattleEnd()
         {
-                Util.PrintLine($"{GameManager.curMonster.Name}을/를 처치했습니다.", ConsoleColor.White, 1000);
-                GameManager.player.Exp += GameManager.curMonster.Exp;
-                GameManager.player.Gold += GameManager.curMonster.Gold;
-                Util.PrintLine($"{GameManager.curMonster.Exp}의 경험치와 {GameManager.curMonster.Gold}의 골드를 얻었습니다!", ConsoleColor.White, 1000);
-                GameManager.curMonster = null;
-                GameManager.ChangeScene("Field");
+            Util.PrintLine($"{GameManager.curMonster.Name}을/를 처치했습니다.", ConsoleColor.White, 1000);
+            GameManager.player.Exp += GameManager.curMonster.Exp;
+            GameManager.player.Gold += GameManager.curMonster.Gold;
+            Util.PrintLine($"{GameManager.curMonster.Exp}의 경험치와 {GameManager.curMonster.Gold}의 골드를 얻었습니다!", ConsoleColor.White, 1000);
+            GameManager.player.LevelUp();
+            GameManager.curMonster = null;
+            GameManager.ChangeScene("Field");
         }
     }
 }

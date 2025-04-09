@@ -38,6 +38,23 @@ namespace ConsoleProject
         private int dexterity;
         public int DEX { get { return dexterity; } set { dexterity = value; } }
 
-        
+        private int criticalChance;
+        public int CriticalChance { get { return criticalChance; } set { criticalChance = value; } }
+
+        public void LevelUp ()
+        {
+            if (Exp >= MaxExp)
+            {
+                Level++;
+                Exp -= MaxExp;
+                MaxExp = (int)(MaxExp * 1.5);
+                MaxHp += 10;
+                Hp = MaxHp;
+                Defense += 1;
+                STR += 1;
+                DEX += 1;
+                Util.PrintLine("레벨업!", ConsoleColor.Yellow, 1000);
+            }
+        }
     }
 }

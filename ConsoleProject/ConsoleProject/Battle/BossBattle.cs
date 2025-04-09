@@ -17,7 +17,7 @@ namespace ConsoleProject.Battle
                 GameManager.curBoss.Hp -= GameManager.player.TotalDamage;
                 Util.PrintLine($"플레이어의 공격!", ConsoleColor.DarkGreen, 500);
                 if (isCritical)
-                    Util.Print("[ 크리티컬! ] ", ConsoleColor.Yellow);
+                    Util.PrintLine("[ 크리티컬! ] ", ConsoleColor.Yellow);
                 Util.Print($"플레이어가 {GameManager.curBoss.Name}에게 ");
                 Util.Print($"{GameManager.player.TotalDamage}", ConsoleColor.Red);
                 Util.PrintLine("의 피해를 입혔습니다.\n", ConsoleColor.White, 1000);

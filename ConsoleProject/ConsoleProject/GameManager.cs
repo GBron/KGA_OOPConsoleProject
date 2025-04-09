@@ -80,9 +80,9 @@ namespace ConsoleProject
             player.MaxExp = 100;
             player.MaxHp = 100;
             player.Hp = player.MaxHp;
-            player.Damage = 10;
+            player.Damage = 500;
             player.Defense = 5;
-            player.Gold = 1000;
+            player.Gold = 20000;
             player.STR = 5;
             player.DEX = 5;
 

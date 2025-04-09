@@ -75,9 +75,9 @@ namespace ConsoleProject
         public void Menu()
         {
             ShowInventory();
-            Util.PrintLine("0. 나가기");
             Util.PrintLine("1. 아이템 사용");
             Util.PrintLine("2. 아이템 장착");
+            Util.PrintLine("0. 나가기");
 
             input = Console.ReadKey(true).Key;
             switch (input)

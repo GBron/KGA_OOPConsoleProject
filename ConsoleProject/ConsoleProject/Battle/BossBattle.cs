@@ -17,7 +17,7 @@ namespace ConsoleProject.Battle
                 GameManager.curBoss.Hp -= GameManager.player.TotalDamage;
                 Util.PrintLine($"플레이어의 공격!", ConsoleColor.DarkGreen, 500);
                 if (isCritical)
-                    Util.PrintLine("[ 크리티컬! ] ", ConsoleColor.Yellow);
+                    Util.PrintLine("[ 크리티컬! ] ", ConsoleColor.Yellow, 500);
                 Util.Print($"플레이어가 {GameManager.curBoss.Name}에게 ");
                 Util.Print($"{GameManager.player.TotalDamage}", ConsoleColor.Red);
                 Util.PrintLine("의 피해를 입혔습니다.\n", ConsoleColor.White, 1000);
@@ -33,7 +33,7 @@ namespace ConsoleProject.Battle
         {
             Util.PrintLine($"플레이어의 방어!", ConsoleColor.DarkGreen, 500);
             Util.Print("플레이어가 방어를 준비합니다.", ConsoleColor.White);
-            playerTempDefense = GameManager.player.Defense + GameManager.player.equipArmor.Defense;
+            playerTempDefense = (int)GameManager.player.Defense + GameManager.player.equipArmor.Defense;
             Util.PrintLine("[ 일시적 방어력 상승 ]\n", ConsoleColor.DarkBlue, 1000);
         }
 
@@ -79,7 +79,7 @@ namespace ConsoleProject.Battle
         protected override void MonsterTotalDamage()
         {
             GameManager.curBoss.TotalDamage =
-                GameManager.curBoss.Damage - ((GameManager.player.Defense + GameManager.player.equipArmor.Defense) + playerTempDefense);
+                GameManager.curBoss.Damage - ((int)(GameManager.player.Defense + GameManager.player.equipArmor.Defense) + playerTempDefense);
         }
 
         public override void BattleEnd()

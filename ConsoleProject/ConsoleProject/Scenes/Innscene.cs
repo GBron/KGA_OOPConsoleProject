@@ -74,7 +74,7 @@ namespace ConsoleProject.Scenes
                     {
                         return;
                     }
-                    GameManager.player.Hp = GameManager.player.MaxExp;
+                    GameManager.player.Heal(1000000);
                     GameManager.player.Gold -= 100;
                     break;
                 case ConsoleKey.D2:

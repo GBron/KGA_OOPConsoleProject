@@ -27,8 +27,8 @@ namespace ConsoleProject
         private int damage;
         public int Damage { get { return damage; } set { damage = value; } }
 
-        private int defense;
-        public int Defense { get { return defense; } set { defense = value; } }
+        private float defense;
+        public float Defense { get { return defense; } set { defense = value; } }
 
         private int strength;
         public int STR { get { return strength; } set { strength = value; } }
@@ -55,7 +55,7 @@ namespace ConsoleProject
                 MaxExp = 100 + (Level / 5) * 100;
                 MaxHp += 10;
                 Hp = MaxHp;
-                Defense += 1;
+                Defense += 0.5f;
                 STR += 1;
                 DEX += 1;
                 Util.PrintLine("레벨업!", ConsoleColor.Yellow, 1000);

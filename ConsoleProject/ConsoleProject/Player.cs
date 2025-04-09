@@ -41,13 +41,17 @@ namespace ConsoleProject
         private int criticalChance;
         public int CriticalChance { get { return criticalChance; } set { criticalChance = value; } }
 
-        public void LevelUp ()
+        private int totalDamage;
+        public int TotalDamage { get { return totalDamage; } set { totalDamage = value; } }
+
+
+        public void LevelUp()
         {
             if (Exp >= MaxExp)
             {
                 Level++;
                 Exp -= MaxExp;
-                MaxExp = (int)(MaxExp * 1.5);
+                MaxExp = 100 + (Level / 5) * 100;
                 MaxHp += 10;
                 Hp = MaxHp;
                 Defense += 1;

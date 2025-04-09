@@ -56,7 +56,7 @@ namespace ConsoleProject
             player.Damage = 50;
             player.Defense = 5;
             player.Gold = 1000;
-            player.STR = 5;
+            player.STR = 50;
             player.DEX = 5;
         }
 

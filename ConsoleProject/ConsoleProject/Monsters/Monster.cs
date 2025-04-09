@@ -29,6 +29,9 @@ namespace ConsoleProject.Monsters
         private int gold;
         public int Gold { get { return gold; } set { gold = value; } }
 
+        private int totalDamage;
+        public int TotalDamage { get { return totalDamage; } set { totalDamage = value; } }
+
         public Monster(string name, int maxHp, int damage, int defense, int exp, int gold)
         {
             this.Name = name;

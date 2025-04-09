@@ -5,12 +5,14 @@
         int playerTempDefense = 0;
         public void PlayerAttack()
         {
-            if (GameManager.curMonster.Defense < GameManager.player.Damage)
+            PlayerTotalDamage();
+
+            if (GameManager.player.TotalDamage > 0)
             {
-                GameManager.curMonster.Hp -= (GameManager.player.Damage - GameManager.curMonster.Defense);
+                GameManager.curMonster.Hp -= GameManager.player.TotalDamage;
                 Util.PrintLine($"플레이어의 공격!", ConsoleColor.DarkGreen, 500);
                 Util.Print($"플레이어가 {GameManager.curMonster.Name}에게 ");
-                Util.Print($"{(GameManager.player.Damage - GameManager.curMonster.Defense)}", ConsoleColor.Red);
+                Util.Print($"{GameManager.player.TotalDamage}", ConsoleColor.Red);
                 Util.PrintLine("의 피해를 입었습니다.\n", ConsoleColor.White, 1000);
                 return;
             }
@@ -24,17 +26,29 @@
             Util.Print("플레이어가 방어를 준비합니다.", ConsoleColor.White, 200);
             playerTempDefense = GameManager.player.Defense;
             Util.PrintLine("[ 일시적 방어력 상승 ]\n", ConsoleColor.DarkBlue, 1000);
+        }
 
+        public void PlayerCritical()
+        {
+
+        }
+
+        private void PlayerTotalDamage()
+        {
+            GameManager.player.TotalDamage = 
+                (int)(GameManager.player.Damage * (1f + ((float)GameManager.player.STR / 100))) - GameManager.curMonster.Defense;
         }
 
         public void MonsterAttack()
         {
-            if (GameManager.player.Defense + playerTempDefense < GameManager.curMonster.Damage)
+            MonsterTotalDamage();
+
+            if (GameManager.curMonster.TotalDamage > 0)
             {
-                GameManager.player.Hp -= (GameManager.curMonster.Damage - (GameManager.player.Defense + playerTempDefense));
+                GameManager.player.Hp -= GameManager.curMonster.TotalDamage;
                 Util.PrintLine($"{GameManager.curMonster.Name}의 공격!", ConsoleColor.DarkRed, 500);
                 Util.Print($"{GameManager.curMonster.Name}이/가 플레이어에게 ");
-                Util.Print($"{(GameManager.curMonster.Damage - (GameManager.player.Defense + playerTempDefense))}", ConsoleColor.Red);
+                Util.Print($"{GameManager.curMonster.TotalDamage}", ConsoleColor.Red);
                 Util.PrintLine("의 피해를 입었습니다.\n", ConsoleColor.White, 1500);
 
                 return;
@@ -46,6 +60,12 @@
         public void MonsterSkill()
         {
 
+        }
+
+        private void MonsterTotalDamage()
+        {
+            GameManager.curMonster.TotalDamage = 
+                GameManager.curMonster.Damage - (GameManager.player.Defense + playerTempDefense);
         }
 
         public void BattleEnd()

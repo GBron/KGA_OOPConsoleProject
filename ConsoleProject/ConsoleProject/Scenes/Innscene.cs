@@ -9,26 +9,30 @@ namespace ConsoleProject.Scenes
 {
     public class InnScene : Scene
     {
-        private string text;
+        private string text1;
+        private string text2;
+        private string text3;
+
         public override void MainScene()
         {
-            if (text == null)
+            if (text1 == null)
             {
-                text = "어서 오세요! 휴식하러 오셨나요?";
+                text1 = "어서 오세요! 휴식하러 오셨나요?";
             }
 
-            Util.PrintLine("   ＿＿＿＿      ");
-            Util.PrintLine(" ／        ＼    ");
-            Util.PrintLine($"(   ^    ^   )   {text}");
-            Util.PrintLine(" ＼   --   ／    ");
-            Util.PrintLine("┌            ┐   ");
-            Util.PrintLine("┃            ┃   ");
-            Util.PrintLine("");
+            Util.PrintLine("       ＿＿＿＿      ");
+            Util.PrintLine("     ／        ＼    ");
+            Util.PrintLine($"    (   ^    ^   )   {text1}");
+            Util.PrintLine("     ＼   --   ／    ");
+            Util.Print("    ┌            ┐   ");
+            Util.PrintLine($"{text2}", ConsoleColor.Green);
+            Util.Print("    ┃            ┃   ");
+            Util.PrintLine($"{text3}", ConsoleColor.DarkGray);
         }
         public override void Select()
         {
             Util.Print("1. 휴식하기 ");
-            Util.Print("[ 체력 회복 ]", ConsoleColor.Red);
+            Util.Print("[ 체력 회복 ] ", ConsoleColor.Red);
             Util.PrintLine("100 G", ConsoleColor.DarkYellow);
             Util.PrintLine("2. 나가기");
         }
@@ -39,13 +43,17 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D1:
                     if (GameManager.player.Gold < 100)
                     {
-                        text = "돈이 부족해요.";
+                        text1 = "돈이 부족해요.";
+                        text2 = null;
+                        text3 = null;
                         return;
                     }
-                    text = "푹 쉬세요~";
+                    text1 = "푹 쉬세요~";
+                    text2 = "[ 체력이 전부 회복 되었습니다 ]";
+                    text3 = "-100G";
                     break;
                 case ConsoleKey.D2:
-                    Util.PrintLine("여관에서 나갑니다.");
+                    Util.PrintLine("여관에서 나갑니다.", ConsoleColor.White, 1500);
                     break;
             }
         }
@@ -68,7 +76,9 @@ namespace ConsoleProject.Scenes
                     break;
                 case ConsoleKey.D2:
                     GameManager.ChangeScene("Town");
-                    text = null;
+                    text1 = null;
+                    text2 = null;
+                    text3 = null;
                     break;
             }
         }

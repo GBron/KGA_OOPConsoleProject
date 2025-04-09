@@ -1,14 +1,20 @@
-﻿namespace ConsoleProject.Scenes
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleProject.Scenes
 {
-    public class BattleScene : Scene
+    public class BossBattleScene : Scene
     {
-        Monsters.MonsterImg MonsterImg = new Monsters.MonsterImg();
+        Monsters.BossMonsterImg MonsterImg = new Monsters.BossMonsterImg();
 
         public override void MainScene()
         {
-            MonsterImg.PrintMonsterImg(GameManager.curMonster.Name);
+            MonsterImg.PrintBossImg(GameManager.curBoss.Name);
 
-            GameManager.enemyStatus.ShowStatus();
+            GameManager.bossStatus.ShowStatus();
         }
         public override void Select()
         {
@@ -21,13 +27,13 @@
             switch (key)
             {
                 case ConsoleKey.D1:
-                    GameManager.monsterBattle.PlayerAttack();
+                    GameManager.bossBattle.PlayerAttack();
                     break;
                 case ConsoleKey.D2:
-                    GameManager.monsterBattle.PlayerDefense();
+                    GameManager.bossBattle.PlayerDefense();
                     break;
                 case ConsoleKey.D3:
-                    Util.PrintLine("당신은 던전 밖으로 도망쳤습니다...", ConsoleColor.White, 1500);
+                    Util.PrintLine("도망칠 수 없습니다..!", ConsoleColor.White, 1500);
                     break;
             }
         }
@@ -40,29 +46,27 @@
             switch (key)
             {
                 case ConsoleKey.D1:
-                    if (GameManager.curMonster.Hp <= 0)
+                    if (GameManager.curBoss.Hp <= 0)
                     {
-                        GameManager.monsterBattle.BattleEnd();
+                        GameManager.bossBattle.BattleEnd();
                     }
                     else
                     {
-                        GameManager.monsterBattle.MonsterAttack();
+                        GameManager.bossBattle.MonsterAttack();
                         if (GameManager.player.Hp <= 0)
                         {
-                            GameManager.monsterBattle.PlayerDead();
+                            GameManager.bossBattle.PlayerDead();
                         }
                     }
                     break;
                 case ConsoleKey.D2:
-                    GameManager.monsterBattle.MonsterAttack();
+                    GameManager.bossBattle.MonsterAttack();
                     if (GameManager.player.Hp <= 0)
                     {
-                        GameManager.monsterBattle.PlayerDead();
+                        GameManager.bossBattle.PlayerDead();
                     }
-                    
                     break;
                 case ConsoleKey.D3:
-                    GameManager.ChangeScene("Field");
                     break;
             }
         }

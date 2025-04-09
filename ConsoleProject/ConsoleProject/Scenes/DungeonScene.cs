@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleProject.Scenes
 {
+    // 미로 구현 후 사용
     public class DungeonScene : Scene
     {
         public override void MainScene()

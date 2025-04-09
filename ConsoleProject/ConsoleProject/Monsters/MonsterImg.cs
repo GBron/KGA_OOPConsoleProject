@@ -50,10 +50,7 @@
                     Util.PrintLine("      ＼        ／");
                     Util.PrintLine("        ￣￣￣￣");
                     break;
-
-
             }
         }
-
     }
 }

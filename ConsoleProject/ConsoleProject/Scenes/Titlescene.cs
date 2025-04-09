@@ -9,7 +9,6 @@
             Console.WriteLine("                      TEXT RPG                       ");
             Console.WriteLine();
             Console.WriteLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
-            Console.WriteLine();
         }
 
         public override void Select()

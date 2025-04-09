@@ -47,7 +47,7 @@ namespace ConsoleProject
 
         public void LevelUp()
         {
-            if (Exp >= MaxExp)
+            while (Exp >= MaxExp)
             {
                 Level++;
                 Exp -= MaxExp;

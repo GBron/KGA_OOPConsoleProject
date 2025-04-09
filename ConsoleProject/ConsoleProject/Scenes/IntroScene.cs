@@ -21,7 +21,7 @@
             // Util.PrintLine("던전을 탐험하고 보물을 얻고 경험치를 쌓읍시다!");  // TODO : 던전 미로 구현 후 주석 해제
             Util.PrintLine("탑에는 강력한 보스 몬스터들이 살고 있습니다.");
             Util.PrintLine("각 층을 돌파하면 던전의 몬스터들이 강해지게 됩니다!");
-            Util.PrintLine("던전은 10층으로 구성되어 있으며 최상층 마왕을");
+            Util.PrintLine("던전은 7층으로 구성되어 있으며 최상층 마왕을");
             Util.PrintLine("무찌르면 클리어 됩니다!");
         }
 

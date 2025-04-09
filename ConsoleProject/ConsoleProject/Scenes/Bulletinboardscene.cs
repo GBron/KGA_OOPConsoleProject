@@ -27,16 +27,16 @@ namespace ConsoleProject.Scenes
             switch (key)
             {
                 case ConsoleKey.D1:
-                    Util.PrintLine("마을은 별 소식없이 평화롭습니다.");
+                    Util.PrintLine("마을은 별 소식없이 평화롭습니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.D2:
-                    Util.PrintLine("퀘스트가 없습니다...");
+                    Util.PrintLine("퀘스트가 없습니다...", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.D3:
-                    Util.PrintLine("아직 마왕의 탑은 건재합니다.");
+                    Util.PrintLine("아직 마왕의 탑은 건재합니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.D4:
-                    Util.PrintLine("게시판을 떠납니다.");
+                    Util.PrintLine("게시판을 떠납니다.", ConsoleColor.White, 1500);
                     break;
             }
         }

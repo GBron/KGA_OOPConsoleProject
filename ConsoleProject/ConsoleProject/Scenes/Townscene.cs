@@ -21,27 +21,26 @@
             switch (key)
             {
                 case ConsoleKey.D1:
-                    Util.PrintLine("상점에 들어갑니다.");
+                    Util.PrintLine("상점에 들어갑니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.D2:
-                    Util.PrintLine("여관에 들어갑니다.");
+                    Util.PrintLine("여관에 들어갑니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.D3:
-                    Util.PrintLine("게시판을 확인합니다.");
+                    Util.PrintLine("게시판을 확인합니다.", ConsoleColor.White, 1500);
                     break;
                 // case ConsoleKey.D4:
                 //     Util.PrintLine("마을의 명물, 성검이 박힌 바위로 다가갑니다.");
                 //     break;
                 case ConsoleKey.D4:
-                    Util.PrintLine("마을 밖으로 나갑니다.");
+                    Util.PrintLine("마을 밖으로 나갑니다.", ConsoleColor.White, 1500);
                     break;
             }
         }
         
         public override void Wait()
         {
-            Util.PrintLine("아무키나 눌러주세요.", ConsoleColor.DarkGray);
-            Console.ReadKey(true);
+            
         }
 
         public override void Result()

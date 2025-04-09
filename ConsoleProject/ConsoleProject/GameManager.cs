@@ -1,4 +1,5 @@
-﻿using ConsoleProject.Monsters;
+﻿using ConsoleProject.Battle;
+using ConsoleProject.Monsters;
 using ConsoleProject.Scenes;
 using ConsoleProject.status;
 
@@ -12,6 +13,7 @@ namespace ConsoleProject
 
         public static Random rand = new Random();
 
+        public static int towerFloor { get; set; }
 
 
         private static Dictionary<string, Scene> sceneDict;
@@ -22,10 +24,17 @@ namespace ConsoleProject
 
         private static MonsterFactory monsterFactory = new Monsters.MonsterFactory();
         public static Monster curMonster;
-        public static EnemyStatus enemyStatus { get;  set; } = new EnemyStatus();
 
+        private static BossFactory bossFactory = new BossFactory();
+        public static Monster curBoss;
 
-        public static Battle battle = new Battle();
+        public static EnemyStatus enemyStatus { get; set; } = new EnemyStatus();
+
+        public static MonsterBattle monsterBattle = new MonsterBattle();
+
+        public static BossStatus bossStatus = new BossStatus();
+
+        public static BossBattle bossBattle = new BossBattle();
 
 
         public static void Start()
@@ -44,6 +53,10 @@ namespace ConsoleProject
             sceneDict.Add("Dungeon", new DungeonScene());
             sceneDict.Add("Tower", new TowerScene());
             sceneDict.Add("Battle", new BattleScene());
+            sceneDict.Add("BossBattle", new BossBattleScene());
+            sceneDict.Add("Tower2", new Tower2Scene());
+            sceneDict.Add("Dead", new DeadScene());
+            sceneDict.Add("Ending", new GameEndScene());
 
             // 현재 씬 설정
             curScene = sceneDict["Title"];
@@ -53,11 +66,11 @@ namespace ConsoleProject
             player.MaxExp = 100;
             player.MaxHp = 100;
             player.Hp = player.MaxHp;
-            player.Damage = 50;
+            player.Damage = 10000;
             player.Defense = 5;
-            player.Gold = 1000;
+            player.Gold = 10000;
             player.STR = 5;
-            player.DEX = 200;
+            player.DEX = 5;
         }
 
 
@@ -70,7 +83,9 @@ namespace ConsoleProject
                 if (curScene != sceneDict["Title"] && curScene != sceneDict["Explan"])
                     playerStatus.ShowStatus();
                 curScene.MainScene();
+                Console.WriteLine();
                 curScene.Select();
+                Console.WriteLine();
                 curScene.Input();
                 curScene.Reaction();
                 curScene.Wait();
@@ -89,9 +104,20 @@ namespace ConsoleProject
             curMonster = monsterFactory.Create(monsterName);
         }
 
+        public static void ChangeBoss(BossList monsterName)
+        {
+            curBoss = bossFactory.Create(monsterName);
+        }
+
         public static void End()
         {
-
+            if (GameManager.towerFloor > 7)
+            {
+                Console.Clear();
+                curScene.MainScene();
+                curScene.Select();
+                curScene.Input();
+            }
         }
 
         public static void Exit()

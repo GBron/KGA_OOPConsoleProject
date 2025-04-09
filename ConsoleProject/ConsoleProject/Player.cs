@@ -38,8 +38,8 @@ namespace ConsoleProject
         private int dexterity;
         public int DEX { get { return dexterity; } set { dexterity = value; } }
 
-        private int criticalChance;
-        public int CriticalChance { get { return criticalChance; } set { criticalChance = value; } }
+        
+        public int criticalChance { get { return 1 + DEX / 4; }}
 
         private int totalDamage;
         public int TotalDamage { get { return totalDamage; } set { totalDamage = value; } }

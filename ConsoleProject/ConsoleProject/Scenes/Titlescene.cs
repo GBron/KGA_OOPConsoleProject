@@ -35,6 +35,7 @@
                 case ConsoleKey.D2:
                     GameManager.Exit();
                     break;
+
             }
         }
     }

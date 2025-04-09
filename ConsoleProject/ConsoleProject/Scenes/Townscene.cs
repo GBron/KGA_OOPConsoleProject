@@ -35,6 +35,9 @@
                 case ConsoleKey.D4:
                     Util.PrintLine("마을 밖으로 나갑니다.", ConsoleColor.White, 1500);
                     break;
+                case ConsoleKey.I:
+                    GameManager.inventory.Open();
+                    break;
             }
         }
         

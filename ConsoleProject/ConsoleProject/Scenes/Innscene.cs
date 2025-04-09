@@ -55,6 +55,9 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D2:
                     Util.PrintLine("여관에서 나갑니다.", ConsoleColor.White, 1500);
                     break;
+                case ConsoleKey.I:
+                    GameManager.inventory.Open();
+                    break;
             }
         }
         public override void Wait()
@@ -80,6 +83,7 @@ namespace ConsoleProject.Scenes
                     text2 = null;
                     text3 = null;
                     break;
+
             }
         }
     }

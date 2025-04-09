@@ -47,6 +47,9 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D2:
                     Util.PrintLine("밖으로 나갑니다.", ConsoleColor.White, 1500);
                     break;
+                case ConsoleKey.I:
+                    GameManager.inventory.Open();
+                    break;
             }
         }
 
@@ -72,6 +75,7 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D2:
                     GameManager.ChangeScene("Field");
                     break;
+
             }
         }
     }

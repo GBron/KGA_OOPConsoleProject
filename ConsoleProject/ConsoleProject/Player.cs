@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ConsoleProject.Item;
 
 namespace ConsoleProject
 {
@@ -59,6 +60,13 @@ namespace ConsoleProject
                 DEX += 1;
                 Util.PrintLine("레벨업!", ConsoleColor.Yellow, 1000);
             }
+        }
+
+        public void Heal(int healPoint)
+        {
+            Hp += healPoint;
+            if(Hp > MaxHp)
+                Hp = MaxHp;
         }
     }
 }

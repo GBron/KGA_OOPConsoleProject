@@ -15,19 +15,24 @@ namespace ConsoleProject
 
         public static int towerFloor { get; set; }
 
-
+        // 씬을 담는 딕셔너리
         private static Dictionary<string, Scene> sceneDict;
         private static Scene curScene;
 
+        // 플레이어 관련
         public static Player player = new Player();
         private static PlayerStatus playerStatus = new PlayerStatus();
+        public static Inventory inventory = new Inventory();
 
+        // 몬스터 관련
         private static MonsterFactory monsterFactory = new Monsters.MonsterFactory();
         public static Monster curMonster;
 
+        // 보스 관련
         private static BossFactory bossFactory = new BossFactory();
         public static Monster curBoss;
 
+        // 적 상태와 전투
         public static EnemyStatus enemyStatus { get; set; } = new EnemyStatus();
 
         public static MonsterBattle monsterBattle = new MonsterBattle();

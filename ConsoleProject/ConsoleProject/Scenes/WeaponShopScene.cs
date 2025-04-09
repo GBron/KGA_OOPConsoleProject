@@ -1,8 +1,12 @@
-﻿using ConsoleProject.Item;
-using ConsoleProject.Item.UsableItem;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace ConsoleProject.Scenes
 {
-    public class Shopscene : Scene
+    public class WeaponShopScene : Scene
     {
         private string text1;
         private string text2;
@@ -10,7 +14,7 @@ namespace ConsoleProject.Scenes
 
         public override void MainScene()
         {
-            if(text1 == null)
+            if (text1 == null)
             {
                 text1 = "어서 오세요! 좋은 물건 많아요!";
             }
@@ -30,7 +34,7 @@ namespace ConsoleProject.Scenes
             }
             else if (key == ConsoleKey.D3)
             {
-                Util.PrintLine($"{text2}", ConsoleColor.Yellow);
+                Util.PrintLine($"{text2}", ConsoleColor.Red);
             }
             else
             {
@@ -42,23 +46,21 @@ namespace ConsoleProject.Scenes
 
         public override void Select()
         {
-            Util.Print("1. 힘의 포션 구입 ");
-            Util.Print("[ 힘 + 1 ] ", ConsoleColor.DarkRed);
+            Util.Print("1. 목검 구입  공격력 + 10 ");
             Util.PrintLine("2000 G", ConsoleColor.DarkYellow);
             Util.Print("2. 민첩의 포션 구입 ");
-            Util.Print("[ 민첩 + 1 ] ", ConsoleColor.DarkCyan);
             Util.PrintLine("2000G", ConsoleColor.DarkYellow);
-            Util.Print("3. 회복 포션 구입 ");
-            Util.PrintLine("200G", ConsoleColor.DarkYellow);
+            Util.Print("3. 활력의 포션 구입 ");
+            Util.PrintLine("3000G", ConsoleColor.DarkYellow);
             Util.PrintLine("4. 나가기");
         }
-        
+
         public override void Reaction()
         {
             switch (key)
             {
                 case ConsoleKey.D1:
-                    if(GameManager.player.Gold < 2000)
+                    if (GameManager.player.Gold < 2000)
                     {
                         text1 = "돈이 부족하신데요?";
                         text2 = null;
@@ -82,7 +84,7 @@ namespace ConsoleProject.Scenes
                     text3 = "-2000G";
                     break;
                 case ConsoleKey.D3:
-                    if (GameManager.player.Gold < 200)
+                    if (GameManager.player.Gold < 3000)
                     {
                         text1 = "돈이 부족하신데요?";
                         text2 = null;
@@ -90,8 +92,8 @@ namespace ConsoleProject.Scenes
                         return;
                     }
                     text1 = "구매 감사합니다!";
-                    text2 = "[ 회복 포션을 구입했습니다 ]";
-                    text3 = "-200G";
+                    text2 = "[ 활력이 느껴집니다 ]";
+                    text3 = "-3000G";
                     break;
                 case ConsoleKey.D4:
                     Util.PrintLine("상점을 나갑니다.", ConsoleColor.White, 1500);
@@ -127,19 +129,19 @@ namespace ConsoleProject.Scenes
                     GameManager.player.DEX += 1;
                     break;
                 case ConsoleKey.D3:
-                    if (GameManager.player.Gold < 200)
+                    if (GameManager.player.Gold < 3000)
                     {
                         return;
                     }
-                    GameManager.player.Gold -= 200;
-                    GameManager.inventory.AddItem(new Potion("회복포션", 50, 200));
+                    GameManager.player.Gold -= 3000;
+                    GameManager.player.MaxHp += 10;
+                    GameManager.player.Hp = GameManager.player.MaxHp;
                     break;
                 case ConsoleKey.D4:
                     GameManager.ChangeScene("Town");
                     text1 = null;
                     text3 = null;
                     break;
-
             }
         }
     }

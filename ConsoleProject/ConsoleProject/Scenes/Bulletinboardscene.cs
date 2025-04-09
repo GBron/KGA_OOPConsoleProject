@@ -38,6 +38,9 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D4:
                     Util.PrintLine("게시판을 떠납니다.", ConsoleColor.White, 1500);
                     break;
+                case ConsoleKey.I:
+                    GameManager.inventory.Open();
+                    break;
             }
         }
         public override void Wait()
@@ -62,6 +65,7 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D4:
                     GameManager.ChangeScene("Town");
                     break;
+
             }
         }
     }

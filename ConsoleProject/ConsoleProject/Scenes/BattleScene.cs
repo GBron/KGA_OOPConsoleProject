@@ -29,6 +29,9 @@
                 case ConsoleKey.D3:
                     Util.PrintLine("당신은 던전 밖으로 도망쳤습니다...", ConsoleColor.White, 1500);
                     break;
+                case ConsoleKey.I:
+                    GameManager.inventory.Open();
+                    break;
             }
         }
         public override void Wait()
@@ -64,6 +67,7 @@
                 case ConsoleKey.D3:
                     GameManager.ChangeScene("Field");
                     break;
+
             }
         }
     }

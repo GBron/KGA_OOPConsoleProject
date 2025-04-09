@@ -35,6 +35,9 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D3:
                     Util.PrintLine("도망칠 수 없습니다..!", ConsoleColor.White, 1500);
                     break;
+                case ConsoleKey.I:
+                    GameManager.inventory.Open();
+                    break;
             }
         }
         public override void Wait()

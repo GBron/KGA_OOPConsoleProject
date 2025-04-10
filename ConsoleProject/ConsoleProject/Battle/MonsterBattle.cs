@@ -57,9 +57,9 @@
             {
                 GameManager.player.Hp -= GameManager.curMonster.TotalDamage;
                 Util.PrintLine($"{GameManager.curMonster.Name}의 공격!", ConsoleColor.DarkRed, 500);
-                Util.Print($"{GameManager.curMonster.Name}이/가 플레이어에게 ");
+                Util.Print("플레이어가 ");
                 Util.Print($"{GameManager.curMonster.TotalDamage}", ConsoleColor.Red);
-                Util.PrintLine("의 피해를 입혔습니다.\n", ConsoleColor.White, 1500);
+                Util.PrintLine("의 피해를 받았습니다.\n", ConsoleColor.White, 1500);
 
                 return;
             }

@@ -2,7 +2,7 @@
 using ConsoleProject.Item.UsableItem;
 namespace ConsoleProject.Scenes
 {
-    public class Shopscene : Scene
+    public class Shopscene : Scene, IShop
     {
         private string text1;
         private string text2;

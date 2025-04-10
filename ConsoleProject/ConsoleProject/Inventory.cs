@@ -1,4 +1,5 @@
 ﻿using ConsoleProject.Item;
+using ConsoleProject.Scenes;
 
 namespace ConsoleProject
 {
@@ -68,6 +69,13 @@ namespace ConsoleProject
                     case "EquipConfirm":
                         EquipConfirm();
                         break;
+                    case "SellMenu":
+                        SellMenu();
+                        break;
+                    case "SellConfirm":
+                        SellConfirm();
+                        break;
+
                 }
             }
         }
@@ -77,6 +85,10 @@ namespace ConsoleProject
             ShowInventory();
             Util.PrintLine("1. 아이템 사용");
             Util.PrintLine("2. 아이템 장착");
+            if (GameManager.curScene is IShop)
+            {
+                Util.PrintLine("3. 아이템 판매");
+            }
             Util.PrintLine("0. 나가기");
 
             input = Console.ReadKey(true).Key;
@@ -97,6 +109,17 @@ namespace ConsoleProject
                     }
                     else
                         Util.PrintLine("장착할 수 있는 아이템이 없습니다.", ConsoleColor.Yellow, 1000);
+                    break;
+                case ConsoleKey.D3:
+                    if (GameManager.curScene is IShop)
+                    {
+                        if (inventory.Count > 0)
+                        {
+                            stack.Push("SellMenu");
+                        }
+                        else
+                            Util.PrintLine("판매할 수 있는 아이템이 없습니다.", ConsoleColor.Yellow, 1000);
+                    }
                     break;
                 case ConsoleKey.D0:
                     stack.Pop();
@@ -138,6 +161,23 @@ namespace ConsoleProject
 
             if (index >= 0 && index < 10)
                 stack.Push("EquipConfirm");
+        }
+
+        public void SellMenu()
+        {
+            ShowInventory();
+            Util.PrintLine("판매할 아이템을 선택하세요.");
+            Util.PrintLine("0. 뒤로가기");
+            input = Console.ReadKey(true).Key;
+            if (input == ConsoleKey.D0)
+            {
+                stack.Pop();
+                return;
+            }
+            index = (int)input - (int)ConsoleKey.D1;
+
+            if (index >= 0 && index < 10)
+                stack.Push("SellConfirm");
         }
 
         public void UseConfirm()
@@ -205,6 +245,35 @@ namespace ConsoleProject
             {
                 ShowInventory();
                 Util.PrintLine("장착할 수 없는 아이템입니다.", ConsoleColor.Yellow, 1000);
+                stack.Pop();
+            }
+        }
+
+        public void SellConfirm()
+        {
+            if (index < inventory.Count)
+            {
+                ShowInventory();
+                Util.PrintLine($"{inventory[index].Name}을 판매하시겠습니까?");
+                Util.PrintLine("1. 예");
+                Util.PrintLine("2. 아니요");
+                input = Console.ReadKey(true).Key;
+                switch (input)
+                {
+                    case ConsoleKey.D1:
+                        GameManager.player.Gold += inventory[index].Price / 5;
+                        GameManager.inventory.RemoveItem(index);
+                        stack.Pop();
+                        break;
+                    case ConsoleKey.D2:
+                        stack.Pop();
+                        break;
+                }
+            }
+            else if (index >= inventory.Count)
+            {
+                ShowInventory();
+                Util.PrintLine("그 슬롯엔 아이템이 없습니다.", ConsoleColor.Yellow, 1000);
                 stack.Pop();
             }
         }

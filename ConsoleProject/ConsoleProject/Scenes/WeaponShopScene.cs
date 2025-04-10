@@ -7,7 +7,7 @@ using ConsoleProject.Item.Weapon;
 
 namespace ConsoleProject.Scenes
 {
-    public class WeaponShopScene : Scene
+    public class WeaponShopScene : Scene, IShop
     {
         private string text1;
         private string text2;

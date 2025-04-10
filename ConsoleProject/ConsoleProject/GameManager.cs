@@ -20,7 +20,7 @@ namespace ConsoleProject
 
         // 씬을 담는 딕셔너리
         private static Dictionary<string, Scene> sceneDict;
-        private static Scene curScene;
+        public static Scene curScene { get; private set;}
 
         // 플레이어 관련
         public static Player player = new Player();
@@ -80,9 +80,9 @@ namespace ConsoleProject
             player.MaxExp = 100;
             player.MaxHp = 100;
             player.Hp = player.MaxHp;
-            player.Damage = 500;
+            player.Damage = 10;
             player.Defense = 5;
-            player.Gold = 20000;
+            player.Gold = 2000;
             player.STR = 5;
             player.DEX = 5;
 

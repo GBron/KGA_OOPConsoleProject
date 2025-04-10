@@ -9,7 +9,7 @@ using ConsoleProject.Item.Armor;
 
 namespace ConsoleProject.Scenes
 {
-    class ArmorShopScene : Scene
+    class ArmorShopScene : Scene, IShop
     {
         private string text1;
         private string text2;

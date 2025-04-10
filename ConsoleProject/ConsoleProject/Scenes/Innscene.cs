@@ -34,7 +34,7 @@ namespace ConsoleProject.Scenes
             Util.Print("1. 휴식하기 ");
             Util.Print("[ 체력 회복 ] ", ConsoleColor.Red);
             Util.PrintLine("100 G", ConsoleColor.DarkYellow);
-            Util.PrintLine("2. 나가기");
+            Util.PrintLine("0. 나가기");
         }
         public override void Reaction()
         {
@@ -52,7 +52,7 @@ namespace ConsoleProject.Scenes
                     text2 = "[ 체력이 전부 회복 되었습니다 ]";
                     text3 = "-100G";
                     break;
-                case ConsoleKey.D2:
+                case ConsoleKey.D0:
                     Util.PrintLine("여관에서 나갑니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.I:
@@ -77,7 +77,7 @@ namespace ConsoleProject.Scenes
                     GameManager.player.Heal(1000000);
                     GameManager.player.Gold -= 100;
                     break;
-                case ConsoleKey.D2:
+                case ConsoleKey.D0:
                     GameManager.ChangeScene("Town");
                     text1 = null;
                     text2 = null;

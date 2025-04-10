@@ -17,11 +17,15 @@ namespace ConsoleProject.Item.Armor
         private int price;
         public int Price { get { return price; } set { price = value; } }
 
-        public Armor(string name, int defense, int price)
+        private string description;
+        public string Desc { get { return description; } set { description = value; } }
+
+        public Armor(string name, int defense, int price, string desc)
         {
-            this.name = name;
-            this.defense = defense;
-            this.price = price;
+            this.Name = name;
+            this.Defense = defense;
+            this.Price = price;
+            this.Desc = desc;
         }
     }
 }

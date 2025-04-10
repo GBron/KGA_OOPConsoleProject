@@ -5,7 +5,7 @@ namespace ConsoleProject
 {
     public class Inventory
     {
-        private List<IItem> inventory;
+        public List<IItem> inventory { get; private set; }
         private Stack<string> stack = new Stack<string>();
         ConsoleKey input;
         int index;
@@ -185,6 +185,9 @@ namespace ConsoleProject
             if (index < inventory.Count && inventory[index] is IUsable)
             {
                 ShowInventory();
+                Util.PrintLine($"[ {inventory[index].Name} ]");
+                Util.PrintLine($"{inventory[index].Desc}");
+                Util.PrintLine("");
                 Util.PrintLine($"{inventory[index].Name}을 사용하시겠습니까?");
                 Util.PrintLine("1. 예");
                 Util.PrintLine("2. 아니요");
@@ -220,6 +223,9 @@ namespace ConsoleProject
             if (index < inventory.Count && inventory[index] is IEquipable)
             {
                 ShowInventory();
+                Util.PrintLine($"[ {inventory[index].Name} ]");
+                Util.PrintLine($"{inventory[index].Desc}");
+                Util.PrintLine("");
                 Util.PrintLine($"{inventory[index].Name}을 장착하시겠습니까?");
                 Util.PrintLine("1. 예");
                 Util.PrintLine("2. 아니요");
@@ -254,6 +260,9 @@ namespace ConsoleProject
             if (index < inventory.Count)
             {
                 ShowInventory();
+                Util.PrintLine($"[ {inventory[index].Name} ]");
+                Util.PrintLine($"{inventory[index].Desc}");
+                Util.PrintLine("");
                 Util.PrintLine($"{inventory[index].Name}을 판매하시겠습니까?");
                 Util.PrintLine("1. 예");
                 Util.PrintLine("2. 아니요");
@@ -280,25 +289,25 @@ namespace ConsoleProject
 
         public void ShowInventory()
         {
-            Util.PrintLine("□□□□□□□□□□ 인벤토리 □□□□□□□□□□");
+            Util.PrintLine("□□□□□□□ 인벤토리 □□□□□□□");
             if (inventory.Count == 0)
             {
-                Util.PrintLine("   인벤토리가 비어있습니다", ConsoleColor.DarkGray);
+                Util.PrintLine("        비어있다", ConsoleColor.DarkGray);
             }
             for (int i = 0; i < inventory.Count; i++)
             {
                 Console.WriteLine($"{i + 1}. {inventory[i].Name}");
             }
-            Util.PrintLine("□□□□□□□□□□□□□□□□□□□□□□□□□□□□□□");
+            Util.PrintLine("□□□□□□□□□□□□□□□□□□□□□□□□");
 
-            Console.SetCursorPosition(32, 0);
-            Util.PrintLine("□□□□□□ 장비 □□□□□□");
-            Console.SetCursorPosition(32, 1);
+            Console.SetCursorPosition(26, 0);
+            Util.PrintLine("□□□□□□□□□ 장비 □□□□□□□□□");
+            Console.SetCursorPosition(26, 1);
             Util.PrintLine($"무기   : {GameManager.player.equipWeapon.Name}");
-            Console.SetCursorPosition(32, 2);
+            Console.SetCursorPosition(26, 2);
             Util.PrintLine($"방어구 : {GameManager.player.equipArmor.Name}");
-            Console.SetCursorPosition(32, 3);
-            Util.PrintLine("□□□□□□□□□□□□□□□□□□");
+            Console.SetCursorPosition(26, 3);
+            Util.PrintLine("□□□□□□□□□□□□□□□□□□□□□□□□");
             Console.SetCursorPosition(0, 13);
 
         }

@@ -11,11 +11,15 @@
         private int price;
         public int Price { get { return price; } set { price = value; } }
 
-        public Weapon(string name, int damage, int price)
+        private string description;
+        public string Desc { get { return description; } set { description = value; } }
+
+        public Weapon(string name, int damage, int price, string desc)
         {
             Name = name;
             Damage = damage;
             Price = price;
+            Desc = desc;
         }
 
     }

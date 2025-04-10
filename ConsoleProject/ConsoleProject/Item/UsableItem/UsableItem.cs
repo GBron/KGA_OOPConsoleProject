@@ -14,6 +14,9 @@ namespace ConsoleProject.Item.UsableItem
         protected int price;
         public int Price { get { return price; } set { price = value; } }
 
+        protected string description;
+        public string Desc { get { return description; } set { description = value; } }
+
         public virtual void Use()
         {
 

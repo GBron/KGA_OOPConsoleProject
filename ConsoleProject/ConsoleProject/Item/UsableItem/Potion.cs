@@ -15,11 +15,12 @@ namespace ConsoleProject.Item.UsableItem
             set { healPoint = value; }
         }
 
-        public Potion(string name, int healingPoint, int price)
+        public Potion(string name, int healingPoint, int price, string desc)
         {
             this.Name = name;
             this.HealPoint = healingPoint;
             this.Price = price;
+            this.Desc = desc;
         }
 
         public override void Use()

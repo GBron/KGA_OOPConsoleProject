@@ -31,7 +31,7 @@ namespace ConsoleProject.Scenes
         public override void Select()
         {
             Util.PrintLine("1. 강력한 적과 전투");
-            Util.PrintLine("2. 나가기");
+            Util.PrintLine("0. 나가기");
         }
 
         public override void Reaction()
@@ -41,7 +41,7 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D1:
                     Util.PrintLine("적과 전투합니다..!", ConsoleColor.White, 1500);
                     break;
-                case ConsoleKey.D2:
+                case ConsoleKey.D0:
                     Util.PrintLine("밖으로 나갑니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.I:
@@ -63,7 +63,7 @@ namespace ConsoleProject.Scenes
                     GameManager.ChangeScene("BossBattle");
                     GameManager.ChangeBoss((Monsters.BossList)GameManager.towerFloor);
                     break;
-                case ConsoleKey.D2:
+                case ConsoleKey.D0:
                     GameManager.ChangeScene("Field");
                     break;
 

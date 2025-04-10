@@ -10,5 +10,7 @@ namespace ConsoleProject.Item
     {
         string Name { get; set; }
         int Price { get; set; }
+        string Desc { get; set; }
+        
     }
 }

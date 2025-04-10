@@ -19,7 +19,7 @@ namespace ConsoleProject.Scenes
             Util.PrintLine("1. 마을 소식 확인");
             Util.PrintLine("2. 퀘스트 확인");
             Util.PrintLine("3. 마왕의 탑 소식 확인");
-            Util.PrintLine("4. 나가기");
+            Util.PrintLine("0. 나가기");
         }
 
         public override void Reaction()
@@ -38,7 +38,7 @@ namespace ConsoleProject.Scenes
                     else
                         Util.PrintLine($"마왕의 탑이 {GameManager.towerFloor - 1}층까지 공략되었습니다!", ConsoleColor.White, 1500);
                     break;
-                case ConsoleKey.D4:
+                case ConsoleKey.D0:
                     Util.PrintLine("게시판을 떠납니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.I:
@@ -64,7 +64,7 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D3:
                     // TODO: 게시판-마왕의 탑 소식 마왕의 탑 씬 구현시 돌파된 층 정보 출력
                     break;
-                case ConsoleKey.D4:
+                case ConsoleKey.D0:
                     GameManager.ChangeScene("Town");
                     break;
 

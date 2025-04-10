@@ -5,6 +5,7 @@ using ConsoleProject.status;
 using ConsoleProject.Item;
 using ConsoleProject.Item.Weapon;
 using ConsoleProject.Item.Armor;
+using ConsoleProject.Item.UsableItem;
 
 namespace ConsoleProject
 {
@@ -30,6 +31,8 @@ namespace ConsoleProject
         public static Weapon weapon;
         public static ArmorFactory armorFactory = new ArmorFactory();
         public static Armor armor;
+        public static PotionFactory potionFactory = new PotionFactory();
+        public static Potion potion;
 
         // 몬스터 관련
         private static MonsterFactory monsterFactory = new Monsters.MonsterFactory();
@@ -78,11 +81,11 @@ namespace ConsoleProject
             // 플레이어 기본 설정
             player.Level = 1;
             player.MaxExp = 100;
-            player.MaxHp = 100;
+            player.MaxHp = 1000;
             player.Hp = player.MaxHp;
-            player.Damage = 10;
+            player.Damage = 1000;
             player.Defense = 5;
-            player.Gold = 2000;
+            player.Gold = 200000;
             player.STR = 5;
             player.DEX = 5;
 

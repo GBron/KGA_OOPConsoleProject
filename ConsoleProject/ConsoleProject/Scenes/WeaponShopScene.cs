@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ConsoleProject.Item.Weapon;
+﻿using ConsoleProject.Item.Weapon;
 
 namespace ConsoleProject.Scenes
 {
@@ -13,7 +8,7 @@ namespace ConsoleProject.Scenes
         private string text2;
         private string text3;
 
-        
+
 
         public override void MainScene()
         {
@@ -53,7 +48,7 @@ namespace ConsoleProject.Scenes
             Util.PrintLine("20000G", ConsoleColor.DarkYellow);
             Util.Print("6. 아다만티움검 구입   공격력 + 60  ");
             Util.PrintLine("30000G", ConsoleColor.DarkYellow);
-            Util.PrintLine("7. 나가기");
+            Util.PrintLine("0. 나가기");
         }
 
         public override void Reaction()
@@ -66,24 +61,25 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D4:
                 case ConsoleKey.D5:
                 case ConsoleKey.D6:
-
-                    GameManager.weapon = GameManager.weaponFactory.Create((WeaponList)(key - ConsoleKey.D1));
-
-                    if (GameManager.player.Gold < GameManager.weapon.Price)
+                    if (GameManager.inventory.inventory.Count < 9)
                     {
-                        text1 = "돈이 부족하신데요?";
-                        text2 = null;
-                        text3 = null;
-                        return;
-                    }
-                    text1 = "구매 감사합니다!";
-                    text2 = $"[ {GameManager.weapon.Name} 구입 ]";
-                    text3 = $"-{GameManager.weapon.Price}G";
+                        GameManager.weapon = GameManager.weaponFactory.Create((WeaponList)(key - ConsoleKey.D1));
 
-                    
+                        if (GameManager.player.Gold < GameManager.weapon.Price)
+                        {
+                            text1 = "돈이 부족하신데요?";
+                            text2 = null;
+                            text3 = null;
+                            return;
+                        }
+                        text1 = "구매 감사합니다!";
+                        text2 = $"[ {GameManager.weapon.Name} 구입 ]";
+                        text3 = $"-{GameManager.weapon.Price}G";
+                    }
+
                     break;
-                    
-                case ConsoleKey.D7:
+
+                case ConsoleKey.D0:
                     Util.PrintLine("상점을 나갑니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.I:
@@ -106,14 +102,19 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D4:
                 case ConsoleKey.D5:
                 case ConsoleKey.D6:
-                    if (GameManager.player.Gold < GameManager.weapon.Price)
+                    if (GameManager.inventory.inventory.Count < 9)
                     {
-                        return;
+                        if (GameManager.player.Gold < GameManager.weapon.Price)
+                        {
+                            return;
+                        }
+                        GameManager.player.Gold -= GameManager.weapon.Price;
+                        GameManager.inventory.AddItem(GameManager.weapon);
                     }
-                    GameManager.player.Gold -= GameManager.weapon.Price;
-                    GameManager.inventory.AddItem(GameManager.weapon);
+                    else
+                        Util.PrintLine("인벤토리가 가득 찼습니다!", ConsoleColor.Yellow, 1500);
                     break;
-                case ConsoleKey.D7:
+                case ConsoleKey.D0:
                     GameManager.ChangeScene("Town");
                     text1 = null;
                     text2 = null;

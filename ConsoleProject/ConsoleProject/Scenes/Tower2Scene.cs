@@ -29,7 +29,7 @@ namespace ConsoleProject.Scenes
                 return;
             }
             Util.PrintLine("1. 다음 층으로");
-            Util.PrintLine("2. 나가기");
+            Util.PrintLine("0. 나가기");
         }
 
         public override void Reaction()
@@ -44,7 +44,7 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D1:
                     Util.PrintLine("다음 층으로 올라갑니다.", ConsoleColor.White, 1500);
                     break;
-                case ConsoleKey.D2:
+                case ConsoleKey.D0:
                     Util.PrintLine("밖으로 나갑니다.", ConsoleColor.White, 1500);
                     break;
                 case ConsoleKey.I:
@@ -72,10 +72,9 @@ namespace ConsoleProject.Scenes
                 case ConsoleKey.D1:
                     GameManager.ChangeScene("Tower");
                     break;
-                case ConsoleKey.D2:
+                case ConsoleKey.D0:
                     GameManager.ChangeScene("Field");
                     break;
-
             }
         }
     }

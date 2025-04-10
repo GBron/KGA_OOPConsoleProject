@@ -10,8 +10,15 @@ namespace ConsoleProject.Scenes
     {
         public override void MainScene()
         {
+            Util.PrintLine("       ／￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣￣＼       ");
+            Util.PrintLine("      |                게시판                |      ");
+            Util.PrintLine("      |             |￣￣|       |￣￣￣￣|  |      ");
+            Util.PrintLine("      |   |￣￣￣|  |＿＿|       |        |  |      ");
+            Util.PrintLine("      |   |      |         |￣|  |        |  |      ");
+            Util.PrintLine("      |   |＿＿＿|         |＿|  |＿＿＿＿|  |      ");
+            Util.PrintLine("       ＼＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿／       ");
+            Util.PrintLine("           | |                        | |           ");
             Util.PrintLine("마을 게시판을 확인합니다.");
-            Util.PrintLine("여러가지가 적혀있군요...");
         }
 
         public override void Select()

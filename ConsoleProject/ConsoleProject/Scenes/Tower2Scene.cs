@@ -16,7 +16,21 @@ namespace ConsoleProject.Scenes
             {
                 Util.PrintLine("탑을 클리어했습니다!");
                 return;
-            }    
+            }
+            Util.PrintLine("          |          _|_______|_          |       ");
+            Util.PrintLine("          |        _|___________|_        |       ");
+            Util.PrintLine("          |      _|_______________|_      |       ");
+            Util.PrintLine("          |    _|___________________|_    |       ");
+            Util.PrintLine("          |  _|_______________________|_  |       ");
+            Util.PrintLine("          |_|___________________________|_|       ");
+            Util.PrintLine("          |_______________________________|       ");
+            Util.PrintLine("");
+            if (GameManager.towerFloor == 7)
+            {
+                Util.PrintLine("위에서 아주 강력한 기운이 느껴집니다...");
+                Util.PrintLine("앞으로 나아가시겠습니까?");
+                return;
+            }
             Util.PrintLine("층 보스를 물리쳤습니다!");
             Util.PrintLine("앞으로 나아가시겠습니까?");
         }

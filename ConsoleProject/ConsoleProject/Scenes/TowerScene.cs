@@ -13,6 +13,28 @@ namespace ConsoleProject.Scenes
 
         public override void MainScene()
         {
+            Util.PrintLine("     ＼                                      ／         ");
+            Util.PrintLine("       ＼ ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿ ／         ");
+            Util.PrintLine("         |                                |           ");
+            if (GameManager.towerFloor == 7)
+            {
+                Util.PrintLine("         |                                |           ");
+                Util.PrintLine("         |                                |           ");
+                Util.PrintLine("         |               ,_,              |           ");
+                Util.PrintLine("         |            __(___)__           |           ");
+                Util.PrintLine("         |            /  \\'/  \\           |           ");
+                Util.PrintLine("         |           |    ^    |          |           ");
+            }
+            else
+            {
+                Util.PrintLine("         |           ＿＿＿＿＿           |           ");
+                Util.PrintLine("         |          / /______\\ \\          |           ");
+                Util.PrintLine("         |         | /________\\ |         |           ");
+                Util.PrintLine("         |         |/___(￣)___\\|         |           ");
+                Util.PrintLine("         |         |___|'￣'|___|         |           ");
+                Util.PrintLine("         |         |   |    |   |         |           ");
+            }
+            Util.PrintLine("");
             if (GameManager.towerFloor == 0)
                 GameManager.towerFloor = 1;
 
@@ -23,8 +45,6 @@ namespace ConsoleProject.Scenes
             else
                 Util.PrintLine("탑에 들어왔습니다.");
             Util.PrintLine("눈 앞에 강력한 적이 보입니다...!!");
-            Util.PrintLine("");
-            Util.PrintLine($"현재 층 : {GameManager.towerFloor}");
             Util.PrintLine("[주의] 강력한 적과의 전투에선 도망 칠 수 없습니다!", ConsoleColor.Yellow);
         }
 

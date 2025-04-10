@@ -71,17 +71,17 @@ namespace ConsoleProject.Monsters
                     Util.PrintLine("        _＿                              ＿_          ");
                     Util.PrintLine("     ／    ＼                          ／    ＼       ");
                     Util.PrintLine("   ／／ \\ /＼＼      /\\______/\\      ／／\\ / ＼＼     ");
-                    Util.PrintLine(" ／／   ｜   \\ \\    ( \\  ,,  / )    / /  ｜    ＼＼   ");
-                    Util.PrintLine(" ／     /     \\ \\    \\   ,,   /    / /    \\      ＼   ");
-                    Util.PrintLine("       ｜     ｜｜    \\  ,,  /    ｜｜    ｜          ");
-                    Util.PrintLine("       /       \\ \\   ｜\\_oo_/｜   / /      \\          ");
-                    Util.PrintLine("      /         \\ \\  ｜ V  V ｜  / /        \\         ");
-                    Util.PrintLine("     /           ＼＼/        \\／／          \\        ");
+                    Util.PrintLine(" ／／   ｜   \\ \\    ( \\  ,,  / )    / /   ｜   ＼＼   ");
+                    Util.PrintLine(" ／     /     \\ \\    \\   ,,   /    / /     \\     ＼   ");
+                    Util.PrintLine("       ｜     ｜｜    \\  ,,  /    ｜｜     ｜         ");
+                    Util.PrintLine("       /       \\ \\   ｜\\_oo_/｜   / /       \\         ");
+                    Util.PrintLine("      /         \\ \\  ｜ V  V ｜  / /         \\        ");
+                    Util.PrintLine("     /           ＼＼/        \\／／           \\       ");
                     break;
                 case "마왕":
                     Util.PrintLine("                        /\\   /\\           ");
                     Util.PrintLine("                       _\\ \\_/ /_          ");
-                    Util.PrintLine("                      < \\_   _/ >         ");
+                    Util.PrintLine("                      < \\_ V _/ >         ");
                     Util.PrintLine("                       \\|-   -|/          ");
                     Util.PrintLine("                     __(_  ^  _)__        ");
                     Util.PrintLine("                    / '\\|v\"\"\"v|/' \\       ");

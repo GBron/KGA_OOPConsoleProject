@@ -4,9 +4,16 @@
     {
         public override void MainScene()
         {
+            Util.PrintLine("     |                        |               |        ");
+            Util.PrintLine("     |                   ／￣￣￣￣￣＼__     |        ");
+            Util.PrintLine("＼   |__________________/______________\\ |    |   |￣ ");
+            Util.PrintLine("__\\  |____________   ____|         ＿ |  |    |   |   ");
+            Util.PrintLine(" |   |  |￣￣￣| /   \\   |        |＿||__|____|   |   ");
+            Util.PrintLine(" |___|  |＿＿＿|/     \\  |   |￣|     |           |   ");
+            Util.PrintLine(" |       |    |/       \\ |___|__|____／￣￣￣￣￣￣￣ ");
+            Util.PrintLine(" |            /         \\           /                 ");
+            Util.PrintLine("");
             Util.PrintLine("마을에 도착했습니다.");
-            Util.PrintLine("마을은 평화로워 보입니다.");
-
         }
         public override void Select()
         {
